@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Objects
+  - Test
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Objects
   - 
   - 
   - 
@@ -47,15 +49,18 @@ TagManager:
   - name: Walls
     uniqueID: 1908117799
     locked: 0
-  - name: Objects
+  - name: Collision Objects
     uniqueID: 880849961
     locked: 0
   - name: Character
     uniqueID: 3319498285
     locked: 0
+  - name: Objects
+    uniqueID: 3040239793
+    locked: 0
   - name: Walls Top
     uniqueID: 464659157
     locked: 0
-  - name: Objects Top
+  - name: Collision Objects Top
     uniqueID: 1350341325
     locked: 0
