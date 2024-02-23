@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 5637118795049233301}
   - component: {fileID: 6456900513452017693}
   - component: {fileID: 1799352987758791755}
+  - component: {fileID: 8118474509621456125}
   - component: {fileID: 5322917130118262123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -975469011
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1897260984, guid: 07c9d9c0e3452e6439e442248e7488f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -114,7 +115,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6456900513452017693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -0.085}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.08, y: 0.06}
+  m_Size: {x: 0.08, y: 0.04}
   m_EdgeRadius: 0
 --- !u!114 &1799352987758791755
 MonoBehaviour:
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: d98f85c0a354f894e93d5df83b011be6, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -184,12 +185,81 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b518b204-6c66-48b6-bc02-5dd651bfe981
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eb55e1fa-07ed-4708-9db1-dbf420ba2bd4
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1445dd4-37c3-4bf2-93f2-a37c85f412fb
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eb5ae8f8-fd1b-4a8d-9209-c299d5efcb2c
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b2b0dc3-f939-4e1f-ab6a-84b140e2b835
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b392cb8-fa65-4096-bc44-f3518ba42edb
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8a7dd2bf-713a-41c5-b715-06f040b55dcc
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72cef5da-0203-4447-8fe8-06279cecf37a
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 310a66bd-bf10-45d5-9ba3-c5c73a3a2fbc
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 65d5e5da-920e-4dd4-94c1-263eb68cd70c
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 84935bb3-a22f-454b-8b53-3788bc51800c
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8d157156-7fc9-4ea4-b5c6-61e122379300
+    m_ActionName: Player/Interact[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &8118474509621456125
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809157766001298030}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57a953ee848871e408214764aa767c31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5322917130118262123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +273,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  isInRange: 0
