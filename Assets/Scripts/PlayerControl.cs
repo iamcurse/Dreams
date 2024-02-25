@@ -49,6 +49,8 @@ public class PlayerControl : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        
+        Screen.fullScreen = !Screen.fullScreen;
     }
     
     private void FixedUpdate()
