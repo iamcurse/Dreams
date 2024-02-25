@@ -1,11 +1,10 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private bool isInRange;
+    [ShowOnly][SerializeField] private bool isInRange;
     private Animator _animator;
     private Rigidbody2D _rigidBody2D;
     
@@ -20,17 +19,7 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
     [SerializeField] private GameObject mobileUI;
-    [DllImport("__Internal")]
-    // ReSharper disable once UnusedMember.Local
-    private static extern bool isMobile();
-
-    private bool IsMobile()
-    {
-        #if !UNITY_EDITOR && UNITY_WEBGL
-            return isMobile();
-        #endif
-        return false;
-    }
+    private bool _isMobile;
 
     private void Awake()
     {
@@ -43,11 +32,21 @@ public class PlayerControl : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        
+#if !UNITY_EDITOR && UNITY_WEBGL
+            _isMobile = IsMobile();
+#endif
+        
     }
+    
+#if !UNITY_EDITOR && UNITY_WEBGL
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern bool IsMobile();
+#endif
 
     private void OnEnable()
     {
-        if (IsMobile())
+        if (_isMobile)
             mobileUI.SetActive(true);
         _move.Enable();
         _interact.Enable();
@@ -56,7 +55,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDisable()
     {
-        if (IsMobile())
+        if (_isMobile)
             mobileUI.SetActive(false);
         _move.Disable();
         _interact.Disable();
