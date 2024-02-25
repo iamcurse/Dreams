@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +20,23 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
     [SerializeField] private GameObject mobileUI;
-    private bool _isMobile;
+
+    #region WebGL Mobile Check
+
+    [DllImport("__Internal")]
+    // ReSharper disable once UnusedMember.Local
+    private static extern bool IsMobile();
+
+    // ReSharper disable once InconsistentNaming
+    private bool isMobile()
+    {
+        #if !UNITY_EDITOR && UNITY_WEBGL
+            return IsMobile();
+        #endif
+        return false;
+    }
+
+    #endregion
 
     private void Awake()
     {
@@ -36,7 +53,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_isMobile)
+        if (isMobile())
             mobileUI.SetActive(true);
         _move.Enable();
         _interact.Enable();
@@ -45,7 +62,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDisable()
     {
-        if (_isMobile)
+        if (isMobile())
             mobileUI.SetActive(false);
         _move.Disable();
         _interact.Disable();
