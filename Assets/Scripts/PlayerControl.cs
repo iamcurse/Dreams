@@ -34,12 +34,15 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
-        _rigidBody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        
         _playerController = new PlayerController();
         _move = _playerController.Player.Move;
         _interact = _playerController.Player.Interact;
+    }
+    
+    private void Start()
+    {
+        _rigidBody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -80,11 +83,9 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Objects"))
-        {
-            _interactableObject = other.GetComponent<InteractableObject>();
-            isInRange = true;
-        }
+        if (!other.gameObject.CompareTag("Objects")) return;
+        _interactableObject = other.GetComponent<InteractableObject>();
+        isInRange = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
