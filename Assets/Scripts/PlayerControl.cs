@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+#if !UNITY_EDITOR && UNITY_WEBGL
+using System.Runtime.InteropServices;
+#endif
 
 public class PlayerControl : MonoBehaviour
 {
@@ -20,6 +23,11 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private GameObject mobileUI;
     private bool _isMobile;
+    
+#if !UNITY_EDITOR && UNITY_WEBGL
+        [DllImport("__Internal")]
+        private static extern bool IsMobile();
+#endif
 
     private void Awake()
     {
@@ -36,13 +44,7 @@ public class PlayerControl : MonoBehaviour
 #if !UNITY_EDITOR && UNITY_WEBGL
             _isMobile = IsMobile();
 #endif
-        
     }
-    
-#if !UNITY_EDITOR && UNITY_WEBGL
-        [System.Runtime.InteropServices.DllImport("__Internal")]
-        private static extern bool IsMobile();
-#endif
 
     private void OnEnable()
     {
