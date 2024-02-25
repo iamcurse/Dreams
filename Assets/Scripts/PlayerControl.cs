@@ -20,20 +20,12 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
     [SerializeField] private GameObject mobileUI;
-    
-    private bool _isLandscape;
 
     #region WebGL Mobile Check
 
     [DllImport("__Internal")]
     // ReSharper disable once UnusedMember.Local
     private static extern bool IsMobile();
-    [DllImport("__Internal")]
-    // ReSharper disable once UnusedMember.Local
-    private static extern bool CheckOrientation();
-    [DllImport("__Internal")]
-    // ReSharper disable once UnusedMember.Local
-    private static extern void GoFullscreen();
     
     // ReSharper disable once InconsistentNaming
     private bool isMobile()
@@ -43,34 +35,8 @@ public class PlayerControl : MonoBehaviour
         #endif
         return false;
     }
-
-    private static void ActivateFullscreen()
-    {
-        #if !UNITY_EDITOR && UNITY_WEBGL
-            GoFullscreen();
-        #endif
-    }
     
-    // ReSharper disable once InconsistentNaming
-    private bool isLandScape()
-    {
-    #if !UNITY_EDITOR && UNITY_WEBGL
-             return CheckOrientation();
-    #endif
-        return false;
-    }
     #endregion
-
-    public void OnPointerClick()
-    {
-        if (isMobile())
-        {
-            if (_isLandscape)
-            {
-                ActivateFullscreen(); 
-            }
-        }
-    }
 
     private void Awake()
     {
@@ -89,18 +55,6 @@ public class PlayerControl : MonoBehaviour
     {
         Move();
         Animate();
-        
-        if (isMobile())
-        {
-            if (isLandScape())
-            {
-                _isLandscape = true;
-            }
-            else if (!isLandScape())
-            {
-                _isLandscape = false;
-            }
-        }
     }
 
     private void OnEnable()
