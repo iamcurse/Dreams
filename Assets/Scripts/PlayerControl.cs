@@ -1,6 +1,6 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Runtime.InteropServices;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
     [DllImport("__Internal")]
     // ReSharper disable once UnusedMember.Local
     private static extern bool IsMobile();
-    
+
     // ReSharper disable once InconsistentNaming
     private bool isMobile()
     {
@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
         #endif
         return false;
     }
-    
+
     #endregion
 
     private void Awake()
@@ -49,14 +49,6 @@ public class PlayerControl : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        
-        Screen.fullScreen = !Screen.fullScreen;
-    }
-    
-    private void FixedUpdate()
-    {
-        Move();
-        Animate();
     }
 
     private void OnEnable()
@@ -75,6 +67,12 @@ public class PlayerControl : MonoBehaviour
         _move.Disable();
         _interact.Disable();
         _interact.performed -= OnInteract;
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+        Animate();
     }
 
     private void Move()
