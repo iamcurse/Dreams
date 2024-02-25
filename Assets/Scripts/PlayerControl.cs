@@ -1,6 +1,6 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Runtime.InteropServices;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -20,13 +20,21 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
     [SerializeField] private GameObject mobileUI;
+    
+    private bool _isLandscape;
 
     #region WebGL Mobile Check
 
     [DllImport("__Internal")]
     // ReSharper disable once UnusedMember.Local
     private static extern bool IsMobile();
-
+    [DllImport("__Internal")]
+    // ReSharper disable once UnusedMember.Local
+    private static extern bool CheckOrientation();
+    [DllImport("__Internal")]
+    // ReSharper disable once UnusedMember.Local
+    private static extern void GoFullscreen();
+    
     // ReSharper disable once InconsistentNaming
     private bool isMobile()
     {
@@ -36,7 +44,33 @@ public class PlayerControl : MonoBehaviour
         return false;
     }
 
+    public static void ActivateFullscreen()
+    {
+        #if !UNITY_EDITOR && UNITY_WEBGL
+            GoFullscreen();
+        #endif
+    }
+    
+    // ReSharper disable once InconsistentNaming
+    private bool isLandScape()
+    {
+    #if !UNITY_EDITOR && UNITY_WEBGL
+             return CheckOrientation();
+    #endif
+        return false;
+    }
     #endregion
+
+    public void OnPointerClick()
+    {
+        if (isMobile())
+        {
+            if (_isLandscape)
+            {
+                ActivateFullscreen(); 
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -49,6 +83,24 @@ public class PlayerControl : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+    }
+    
+    private void FixedUpdate()
+    {
+        Move();
+        Animate();
+        
+        if (isMobile())
+        {
+            if (isLandScape())
+            {
+                _isLandscape = true;
+            }
+            else if (!isLandScape())
+            {
+                _isLandscape = false;
+            }
+        }
     }
 
     private void OnEnable()
@@ -67,12 +119,6 @@ public class PlayerControl : MonoBehaviour
         _move.Disable();
         _interact.Disable();
         _interact.performed -= OnInteract;
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-        Animate();
     }
 
     private void Move()
