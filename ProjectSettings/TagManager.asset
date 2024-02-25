@@ -52,11 +52,11 @@ TagManager:
   - name: Collision Objects
     uniqueID: 880849961
     locked: 0
-  - name: Character
-    uniqueID: 3319498285
-    locked: 0
   - name: Objects
     uniqueID: 3040239793
+    locked: 0
+  - name: Character
+    uniqueID: 3319498285
     locked: 0
   - name: Walls Top
     uniqueID: 464659157

@@ -240,5 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbcfc261be0a8a41b9c7f65096b23f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
   isOpen: 0
   audioClip: {fileID: 8300000, guid: 83d49b0e5df53b140b5fa018830d39fd, type: 3}
+  chestItem:
+    m_PersistentCalls:
+      m_Calls: []
