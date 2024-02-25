@@ -3580,6 +3580,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1759089297419304372, guid: 7423f025eaad7c14ab5b36e4d9ba48b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.561
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759089297419304372, guid: 7423f025eaad7c14ab5b36e4d9ba48b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.246
+      objectReference: {fileID: 0}
     - target: {fileID: 4957440980232670179, guid: 7423f025eaad7c14ab5b36e4d9ba48b9, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3763,6 +3771,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 138917787898243847, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620685489794451975, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
+      propertyPath: TryMobile
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620685489794451975, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
+      propertyPath: tryMobile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620685489794451975, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
+      propertyPath: checkMobile
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4635197123262330389, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
       propertyPath: m_Pivot.x
       value: 0

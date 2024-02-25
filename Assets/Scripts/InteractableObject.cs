@@ -20,6 +20,5 @@ public class InteractableObject : MonoBehaviour
         if (!isInRange) return;
         
         interaction.Invoke();
-        Debug.Log("Interact Success!" + gameObject.transform.position);
     } 
 }

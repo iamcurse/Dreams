@@ -5,19 +5,23 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Manager;
-    public Inventory inventory;
-    
-    public Transform inventoryUI;
-    public GameObject inventoryItemTemplate;
+    private static InventoryManager _manager;
+    [SerializeField] private Inventory inventory;
+    private Transform _inventoryUI;
+    [SerializeField] private GameObject inventoryItemTemplate;
     
     private void Awake(){
-        if (Manager == null)
+        if (_manager == null)
         {
-            Manager = this;
+            _manager = this;
         }
     }
-    
+
+    private void Start()
+    {
+        _inventoryUI = this.gameObject.transform;
+    }
+
     private void FixedUpdate() {
         ListItems();
     }
@@ -44,7 +48,7 @@ public class InventoryManager : MonoBehaviour
 
     private void ListItems()
     {
-        foreach (Transform item in inventoryUI)
+        foreach (Transform item in _inventoryUI)
         {
             Destroy(item.gameObject);
         }
@@ -53,7 +57,7 @@ public class InventoryManager : MonoBehaviour
         {
             try
             {
-                var itemGameObject = Instantiate(inventoryItemTemplate, inventoryUI);
+                var itemGameObject = Instantiate(inventoryItemTemplate, _inventoryUI);
                 var itemName = itemGameObject.transform.Find("ItemName").GetComponent<TMP_Text>();
                 var itemIcon = itemGameObject.transform.Find("ItemIcon").GetComponent<Image>();
 

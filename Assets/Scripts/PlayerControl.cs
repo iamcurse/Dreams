@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,28 +18,12 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveX = Animator.StringToHash("MoveX");
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
-    [SerializeField] private GameObject mobileUI;
-
-    #region WebGL Mobile Check
-
-    [DllImport("__Internal")]
-    // ReSharper disable once UnusedMember.Local
-    private static extern bool IsMobile();
-
-    // ReSharper disable once InconsistentNaming
-    private bool isMobile()
-    {
-        #if !UNITY_EDITOR && UNITY_WEBGL
-            return IsMobile();
-        #endif
-        return false;
-    }
-
-    #endregion
+    private UIController _uiController;
 
     private void Awake()
     {
         _playerController = new PlayerController();
+        _uiController = FindFirstObjectByType<UIController>();
         _move = _playerController.Player.Move;
         _interact = _playerController.Player.Interact;
     }
@@ -53,8 +36,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnEnable()
     {
-        if (isMobile())
-            mobileUI.SetActive(true);
+        _uiController.ShowControlUI();
         _move.Enable();
         _interact.Enable();
         _interact.performed += OnInteract;
@@ -62,8 +44,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDisable()
     {
-        if (isMobile())
-            mobileUI.SetActive(false);
+        _uiController.HideControlUI();
         _move.Disable();
         _interact.Disable();
         _interact.performed -= OnInteract;
@@ -98,10 +79,17 @@ public class PlayerControl : MonoBehaviour
     {
         isInRange = false;
     }
-
+    
+    public void Interact()
+    {
+        if (!isInRange)
+            return;
+        _interactableObject.Interact();
+    }
+    
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        if (isInRange)
-            _interactableObject.Interact();
+        if (!_uiController.onMobile)
+            Interact();
     }
 }
