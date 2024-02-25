@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
         return false;
     }
 
-    public static void ActivateFullscreen()
+    private static void ActivateFullscreen()
     {
         #if !UNITY_EDITOR && UNITY_WEBGL
             GoFullscreen();
