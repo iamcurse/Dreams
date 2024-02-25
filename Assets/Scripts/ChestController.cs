@@ -26,7 +26,6 @@ public class ChestController : MonoBehaviour
         
         chestItem.Invoke();
         
-        Debug.Log("Chest Open");
         isOpen = true;
     }
 
