@@ -39,15 +39,16 @@ public class PlayerControl : MonoBehaviour
         _uiController.ShowControlUI();
         _move.Enable();
         _interact.Enable();
-        _interact.performed += OnInteract;
+        // _interact.performed += OnInteract;
     }
 
     private void OnDisable()
     {
-        _uiController.HideControlUI();
+        if (_uiController)
+            _uiController.HideControlUI();
         _move.Disable();
         _interact.Disable();
-        _interact.performed -= OnInteract;
+        // _interact.performed -= OnInteract;
     }
 
     private void FixedUpdate()
@@ -80,16 +81,16 @@ public class PlayerControl : MonoBehaviour
         isInRange = false;
     }
     
+    public void OnInteract()
+    {
+        if (!_uiController.onMobile)
+            Interact();
+    }
+
     public void Interact()
     {
         if (!isInRange)
             return;
         _interactableObject.Interact();
-    }
-    
-    private void OnInteract(InputAction.CallbackContext callbackContext)
-    {
-        if (!_uiController.onMobile)
-            Interact();
     }
 }
