@@ -205,17 +205,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &919659329 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-  m_PrefabInstance: {fileID: 8808351720466027642}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df1621dec22943845956a243f5c99a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1187634176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5081943290857170840, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
@@ -3872,10 +3861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 3514320921570749805, guid: bbef053e00c04a24a86adeac575717b4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3860630792993670482, guid: bbef053e00c04a24a86adeac575717b4, type: 3}
       propertyPath: m_Follow
       value: 
@@ -3919,10 +3904,6 @@ PrefabInstance:
     - target: {fileID: 7276541645190379799, guid: bbef053e00c04a24a86adeac575717b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7726350211027268216, guid: bbef053e00c04a24a86adeac575717b4, type: 3}
-      propertyPath: orthographic size
-      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4018,6 +3999,10 @@ PrefabInstance:
       propertyPath: doorClose
       value: 
       objectReference: {fileID: 8300000, guid: 8e767e1094b5f154e9cacc58d46907a3, type: 3}
+    - target: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: openByDefault
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4398714882663086615, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_Name
       value: Large Door
@@ -4033,30 +4018,6 @@ PrefabInstance:
     - target: {fileID: 6251783445684908302, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_TagString
       value: Objects
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 919659329}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DoorInteract
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DoorController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: interaction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8582012925539324436, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_LocalPosition.x
