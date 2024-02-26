@@ -4,6 +4,7 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     [ShowOnly][SerializeField] private bool isInRange;
+    [SerializeField] private bool openByDefault;
     [ShowOnly][SerializeField] private bool isOpen;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
@@ -26,8 +27,10 @@ public class DoorController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _boxCollider2Ds = GetComponents<BoxCollider2D>();
+        if (openByDefault)
+            OpenDoorNoSound();
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         isInRange = true;
@@ -56,11 +59,10 @@ public class DoorController : MonoBehaviour
         if (!isInRange) return;
         if (isOpen) return;
         
-        _animator.SetBool(IsOpen, true);
+        isOpen = true;
         if (doorOpen)
             AudioSource.PlayClipAtPoint(doorOpen, transform.position);
-
-        isOpen = true;
+        
         DoorPropertiesChange();
     }
 
@@ -69,19 +71,33 @@ public class DoorController : MonoBehaviour
         if (!isInRange) return;
         if (!isOpen) return;
         
-        _animator.SetBool(IsOpen, false);
+        isOpen = false;
         if (doorOpen)
             AudioSource.PlayClipAtPoint(doorClose, transform.position);
-
-        isOpen = false;
+        
         DoorPropertiesChange();
     }
+    
+    private void OpenDoorNoSound()
+    {
+        if (isOpen) return;
+        isOpen = true;
+        DoorPropertiesChange();
+    }
+    
+    // private void CloseDoorNoSound()
+    // {
+    //     if (!isOpen) return;
+    //     isOpen = false;
+    //     DoorPropertiesChange();
+    // }
 
     private void DoorPropertiesChange()
     {
         switch (isOpen)
         {
             case true:
+                _animator.SetBool(IsOpen, isOpen);
                 _boxCollider2Ds[0].enabled = false;
                 if (!smallDoor)
                 {
@@ -90,6 +106,7 @@ public class DoorController : MonoBehaviour
                 }
                 break;
             default:
+                _animator.SetBool(IsOpen, isOpen);
                 _boxCollider2Ds[0].enabled = true;
                 if (!smallDoor)
                 {
