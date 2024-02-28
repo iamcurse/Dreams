@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   testRunner:
-    name: Test for ${{ matrix.targetPlatform }} ✨
+    name: Test for ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
