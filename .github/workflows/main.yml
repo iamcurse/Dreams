@@ -178,6 +178,70 @@ jobs:
           name: Build-StandaloneWindows64
           path: Build/StandaloneWindows64
           
+  buildAndroid:
+    needs: testRunner
+    name: Build for Android 📱
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+    steps:
+      # Free Up Disk Space
+      - name: Free Up Space For Android
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image -q)
+          df -h
+
+      # Checkout
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      # Git LFS
+      - name: Create LFS File List
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+        
+      - name: Restore LFS cache
+        uses: actions/cache@v4.0.0
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+          
+      # Cache
+      - name: Cached Restored
+        uses: actions/cache@v4.0.0
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-Build-
+            Library-
+
+      # Build   
+      - name: Android
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: Android
+
+      # Output
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build-Android
+          path: Build/Android
+          
   deployPages:
     needs: buildWebGL
     name: Deploy To Github Pages 🚀
