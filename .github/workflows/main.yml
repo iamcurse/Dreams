@@ -37,5 +37,5 @@ jobs:
       # Output
       - uses: actions/upload-artifact@v3
         with:
-          name: Library
-          path: Library
+          name: Packages
+          path: Packages
