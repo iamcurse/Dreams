@@ -100,7 +100,7 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-build-
+            Library-Build-
             Library-
           
       # Build
@@ -116,8 +116,8 @@ jobs:
       # Output
       - uses: actions/upload-artifact@v3
         with:
-          name: build-WebGL
-          path: build/WebGL
+          name: Build-WebGL
+          path: Build/WebGL
           
   buildWindows:
     needs: testRunner
@@ -153,7 +153,7 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-build-
+            Library-Build-
             Library-
           
       # Build
@@ -169,11 +169,11 @@ jobs:
       # Output
       - uses: actions/upload-artifact@v3
         with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: Build-StandaloneWindows64
+          path: Build/StandaloneWindows64
           
   buildAndroid:
-    needs: buildWindows
+    needs: testRunner
     name: Build for Android 📱
     runs-on: ubuntu-latest
     strategy:
@@ -206,11 +206,11 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-build-
+            Library-Build-
             Library-
 
       # Build   
-      - name: Build Windows Standalone
+      - name: Android
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -222,8 +222,8 @@ jobs:
       # Output
       - uses: actions/upload-artifact@v3
         with:
-          name: build-Android
-          path: build/Android
+          name: Build-Android
+          path: Build/Android
           
   deployPages:
     needs: buildWebGL
@@ -245,4 +245,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/WebGL
+          folder: Build/WebGL
