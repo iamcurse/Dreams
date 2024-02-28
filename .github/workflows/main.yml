@@ -13,9 +13,9 @@ jobs:
     strategy:
       fail-fast: false
         matrix:
-        testMode:
-          - EditMode
-          - PlayMode
+          testMode:
+            - EditMode
+            - PlayMode
     steps:
       # Checkout
       - name: Checkout repository
