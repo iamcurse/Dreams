@@ -59,16 +59,12 @@ jobs:
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
-      # Output
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Test results (${{ matrix.testMode }})
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
-          
   buildWebGL:
     needs: testRunner
     name: Build For WebGL 🌐
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     steps:
       # Checkout
       - name: Checkout Repository
@@ -120,6 +116,8 @@ jobs:
     needs: testRunner
     name: Build For Windows 🖥️
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     steps:
       # Checkout
       - name: Checkout Repository
@@ -171,6 +169,8 @@ jobs:
     needs: testRunner
     name: Build for Android 📱
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     steps:
       # Checkout
       - name: Checkout Repository
