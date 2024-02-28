@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-        matrix:
-          testMode:
-            - EditMode
-            - PlayMode
+      matrix:
+        testMode:
+          - EditMode
+          - PlayMode
     steps:
       # Checkout
       - name: Checkout repository
