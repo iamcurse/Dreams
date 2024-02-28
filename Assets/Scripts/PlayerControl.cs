@@ -39,7 +39,6 @@ public class PlayerControl : MonoBehaviour
         _uiController.ShowControlUI();
         _move.Enable();
         _interact.Enable();
-        // _interact.performed += OnInteract;
     }
 
     private void OnDisable()
@@ -48,7 +47,6 @@ public class PlayerControl : MonoBehaviour
             _uiController.HideControlUI();
         _move.Disable();
         _interact.Disable();
-        // _interact.performed -= OnInteract;
     }
 
     private void FixedUpdate()

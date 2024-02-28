@@ -18,7 +18,7 @@ jobs:
           - PlayMode
     steps:
       # Checkout
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       # Git LFS
@@ -50,14 +50,21 @@ jobs:
       # Test
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
+        id: testRunner
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           testMode: ${{ matrix.testMode }}
-          checkName: ${{ matrix.testMode }} test results
+          checkName: ${{ matrix.testMode }} Test Results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          
+      # Output
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Test results (${{ matrix.testMode }})
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
           
   buildWebGL:
     needs: testRunner
@@ -70,7 +77,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         
-    # Git LFS
+      # Git LFS
       - name: Create LFS File List
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         
@@ -123,7 +130,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         
-    # Git LFS
+      # Git LFS
       - name: Create LFS File List
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         
@@ -166,7 +173,7 @@ jobs:
           path: build/StandaloneWindows64
           
   buildAndroid:
-    needs: testRunner
+    needs: buildWindows
     name: Build for Android 📱
     runs-on: ubuntu-latest
     strategy:
@@ -176,7 +183,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         
-    # Git LFS
+      # Git LFS
       - name: Create LFS File List
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         
