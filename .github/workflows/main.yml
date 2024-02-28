@@ -6,27 +6,8 @@ permissions:
   contents: write
   checks: write
 
-jobs:
-  free-disk-space:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
-          tool-cache: false
-        
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-        
+jobs:        
   testRunner:
-    needs: free-disk-space
     name: Test for ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
     strategy:
@@ -58,7 +39,8 @@ jobs:
           git reset --hard
           
       # Cache
-      - uses: actions/cache@v4.0.0
+      - name: Cached Restored
+        uses: actions/cache@v4.0.0
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -80,7 +62,8 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       # Output
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: Test Results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -114,7 +97,8 @@ jobs:
           git reset --hard
           
       # Cache
-      - uses: actions/cache@v4.0.0
+      - name: Cached Restored
+        uses: actions/cache@v4.0.0
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -133,7 +117,8 @@ jobs:
           targetPlatform: WebGL
 
       # Output
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: Build-WebGL
           path: Build/WebGL
@@ -167,7 +152,8 @@ jobs:
           git reset --hard
           
       # Cache
-      - uses: actions/cache@v4.0.0
+      - name: Cached Restored
+        uses: actions/cache@v4.0.0
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -186,63 +172,11 @@ jobs:
           targetPlatform: StandaloneWindows64
 
       # Output
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: Build-StandaloneWindows64
           path: Build/StandaloneWindows64
-          
-  buildAndroid:
-    needs: testRunner
-    name: Build for Android 📱
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      # Checkout
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
-      # Git LFS
-      - name: Create LFS File List
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-        
-      - name: Restore LFS cache
-        uses: actions/cache@v2
-        id: lfs-cache
-        with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-          
-      # Cache
-      - uses: actions/cache@v4.0.0
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-Build-
-            Library-
-
-      # Build   
-      - name: Android
-        uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: Android
-
-      # Output
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Build-Android
-          path: Build/Android
           
   deployPages:
     needs: buildWebGL
@@ -256,8 +190,8 @@ jobs:
       # Get WebGL Build Cache
       - uses: actions/download-artifact@v3
         with:
-          name: build-WebGL
-          path: build
+          name: Build-WebGL
+          path: Build
           
       # Deploy
       - name: Deploy 🚀
