@@ -103,7 +103,7 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-Build-
+            Library-build-
             Library-
           
       # Build
@@ -121,7 +121,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Build-WebGL
-          path: Build/WebGL
+          path: build/WebGL
           
   buildWindows:
     needs: testRunner
@@ -158,7 +158,7 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-Build-
+            Library-build-
             Library-
           
       # Build
@@ -176,7 +176,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Build-StandaloneWindows64
-          path: Build/StandaloneWindows64
+          path: build/StandaloneWindows64
           
   buildAndroid:
     needs: testRunner
@@ -222,7 +222,7 @@ jobs:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-Build-
+            Library-build-
             Library-
 
       # Build   
@@ -240,7 +240,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Build-Android
-          path: Build/Android
+          path: build/Android
           
   deployPages:
     needs: buildWebGL
@@ -255,11 +255,11 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: Build-WebGL
-          path: Build
+          path: build
           
       # Deploy
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: Build/WebGL
+          folder: build/WebGL
