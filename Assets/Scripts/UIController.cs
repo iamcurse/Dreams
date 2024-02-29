@@ -15,18 +15,19 @@ public class UIController : MonoBehaviour
     private static extern bool IsMobile();
 
     // ReSharper disable once InconsistentNaming
-    private bool isMobile()
+    private void isMobile()
     {
         #if !UNITY_EDITOR && UNITY_WEBGL
-            return IsMobile();
+            onMobile = IsMobile();
         #endif
-        return false;
     }
     #endregion
     
     private void Awake()
     {
-        onMobile = isMobile() || checkMobile;
+        isMobile();
+        if (checkMobile)
+            onMobile = true;
         _playerControl = FindFirstObjectByType<PlayerControl>();
         _mobileUI = transform.GetChild(0).gameObject;
         _fullscreenUI = transform.GetChild(1).gameObject;

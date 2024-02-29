@@ -62,8 +62,8 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       # Output
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: Test Results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -84,7 +84,7 @@ jobs:
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         
       - name: Restore LFS cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4.0.0
         id: lfs-cache
         with:
           path: .git/lfs
@@ -117,8 +117,8 @@ jobs:
           targetPlatform: WebGL
 
       # Output
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: Build-WebGL
           path: build/WebGL
@@ -139,7 +139,7 @@ jobs:
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         
       - name: Restore LFS cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4.0.0
         id: lfs-cache
         with:
           path: .git/lfs
@@ -172,8 +172,8 @@ jobs:
           targetPlatform: StandaloneWindows64
 
       # Output
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: Build-StandaloneWindows64
           path: build/StandaloneWindows64
@@ -226,7 +226,7 @@ jobs:
             Library-
 
       # Build   
-      - name: Android
+      - name: Build Android
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -236,8 +236,8 @@ jobs:
           targetPlatform: Android
 
       # Output
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: Build-Android
           path: build/Android
