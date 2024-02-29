@@ -1,6 +1,9 @@
 name: GameCI Actions 🎮
 
-on: [push, pull_request]
+on: 
+  [push, pull_request]:
+    branches:
+      - main
 
 permissions:
   contents: write
