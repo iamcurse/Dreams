@@ -246,7 +246,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: Build-Android
-          path: build/Android
+          path: build/Android/Android.apk
           
   deployPages:
     needs: buildWebGL
@@ -268,5 +268,5 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
+          branch: github-pages
           folder: build/WebGL
