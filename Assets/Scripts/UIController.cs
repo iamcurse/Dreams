@@ -20,14 +20,23 @@ public class UIController : MonoBehaviour
         #if !UNITY_EDITOR && UNITY_WEBGL
             onMobile = IsMobile();
         #endif
+        #if !UNITY_EDITOR && UNITY_ANDROID
+            onMobile = true;
+        #endif
     }
     #endregion
     
     private void Awake()
     {
         isMobile();
-        if (checkMobile)
-            onMobile = true;
+        #region Check Mobile Force Disable
+
+        #if UNITY_EDITOR
+            if (checkMobile)
+                onMobile = true;
+        #endif
+        
+        #endregion
         _playerControl = FindFirstObjectByType<PlayerControl>();
         _mobileUI = transform.GetChild(0).gameObject;
         _fullscreenUI = transform.GetChild(1).gameObject;
