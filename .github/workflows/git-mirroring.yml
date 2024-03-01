@@ -18,5 +18,5 @@ jobs:
         uses: action-pack/gitlab-sync@v3
         with:
           username: ${{ github.actor }}
-          url: https://gitlab.com/MrCurse/${{ github.repository }}.git
+          url: https://gitlab.com/${{ github.repository }}.git
           token: ${{ secrets.GITLAB_TOKEN }}
