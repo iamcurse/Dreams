@@ -334,12 +334,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1621dec22943845956a243f5c99a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInRange: 0
-  openByDefault: 0
   isOpen: 0
-  doorOpen: {fileID: 0}
-  doorClose: {fileID: 0}
+  isLock: 1
+  needKey: 1
+  openByDefault: 0
+  doorOpen: {fileID: 8300000, guid: 82dfd5c9da04f9440a43d3b79f3bd1fe, type: 3}
+  doorClose: {fileID: 8300000, guid: 8e767e1094b5f154e9cacc58d46907a3, type: 3}
   smallDoor: 0
+  key: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
 --- !u!1 &6099935171797161821
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &496228115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+  m_PrefabInstance: {fileID: 1480026282016771076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbcfc261be0a8a41b9c7f65096b23f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +216,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785418919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+  m_PrefabInstance: {fileID: 1888708945252289253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbcfc261be0a8a41b9c7f65096b23f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1053652622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+  m_PrefabInstance: {fileID: 784204968286190984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbcfc261be0a8a41b9c7f65096b23f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1099382677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+  m_PrefabInstance: {fileID: 1839303732921715350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbcfc261be0a8a41b9c7f65096b23f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1187634176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5081943290857170840, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
@@ -3443,6 +3487,38 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1053652622}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 4355811728796697475, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Item, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6568595490790790940, guid: 960e570907ffdd84c815cf6ea2598a48, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.046
@@ -3539,6 +3615,38 @@ PrefabInstance:
     - target: {fileID: 285324259784538801, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496228115}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Item, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8511393713813699175, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
       propertyPath: m_Name
@@ -3646,6 +3754,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1099382677}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 2830866500308123492, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Item, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5764152639882792877, guid: 09465875aeae61a48be1f3ce870ed635, type: 3}
       propertyPath: m_Name
       value: Small Chest
@@ -3706,6 +3846,38 @@ PrefabInstance:
     - target: {fileID: 899074389977279785, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
       propertyPath: m_Name
       value: Gold Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 785418919}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChestController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: chestItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Item, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4860900204241900242, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3993,6 +4165,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1295779358471206207, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: isLock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: needKey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1411287083850252757, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
