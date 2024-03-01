@@ -22,9 +22,11 @@ public class DoorController : MonoBehaviour
 
     private void Awake()
     {
-        if (smallDoor) return;
-        _closeDoorFrame = transform.GetChild(0).GameObject();
-        _openDoorFrame = transform.GetChild(1).GameObject();
+        if (!smallDoor)
+        {
+            _closeDoorFrame = transform.GetChild(0).GameObject();
+            _openDoorFrame = transform.GetChild(1).GameObject();
+        }
 
         _inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
