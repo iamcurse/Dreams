@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,13 @@ public class ChestController : MonoBehaviour
     private Animator _animator;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
     [SerializeField] private UnityEvent chestItem;
+
+    private InventoryManager _inventoryManager;
+
+    private void Awake()
+    {
+        _inventoryManager = FindFirstObjectByType<InventoryManager>();
+    }
 
     private void Start()
     {
@@ -37,5 +45,11 @@ public class ChestController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         isInRange = false;
+    }
+
+    public void AddItem(Item item)
+    {
+            
+        _inventoryManager.Add(item);
     }
 }
