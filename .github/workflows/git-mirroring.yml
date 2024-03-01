@@ -1,0 +1,23 @@
+name: Git Mirroring 🪩
+
+on: [push, pull_request, create, delete]
+
+jobs:        
+  sync:
+    name: Gitlab Sync
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      # Gitlab Sync
+      - name: Gitlab Sync
+        uses: action-pack/gitlab-sync@v3
+        with:
+          username: ${{ github.actor }}
+          url: https://gitlab.com/${{ github.repository }}.git
+          # Personal access token from gitlab.com 
+          token: ${{ secrets.GITLAB_TOKEN }}

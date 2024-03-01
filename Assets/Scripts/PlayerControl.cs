@@ -20,12 +20,16 @@ public class PlayerControl : MonoBehaviour
 
     private UIController _uiController;
 
+    public InventoryManager inventoryManager;
+
     private void Awake()
     {
         _playerController = new PlayerController();
         _uiController = FindFirstObjectByType<UIController>();
         _move = _playerController.Player.Move;
         _interact = _playerController.Player.Interact;
+
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
     
     private void Start()

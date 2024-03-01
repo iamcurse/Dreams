@@ -25,7 +25,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
 
       # Git LFS
       - name: Create LFS File List
@@ -53,7 +53,6 @@ jobs:
           restore-keys: |
             Library-test-project-
             Library-
-
       # Test
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
@@ -83,7 +82,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         
       # Git LFS
       - name: Create LFS File List
@@ -138,7 +137,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         
       # Git LFS
       - name: Create LFS File List
@@ -199,10 +198,9 @@ jobs:
           sudo apt clean
           docker rmi $(docker image ls -aq)
           df -h
-
       # Checkout
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         
       # Git LFS
       - name: Create LFS File List
@@ -230,7 +228,6 @@ jobs:
           restore-keys: |
             Library-build-
             Library-
-
       # Build   
       - name: Build Android
         uses: game-ci/unity-builder@v4
@@ -255,7 +252,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
           
       # Get WebGL Build Cache
       - name: Download a Build Artifact
@@ -270,3 +267,4 @@ jobs:
         with:
           branch: github-pages
           folder: build/WebGL
+          

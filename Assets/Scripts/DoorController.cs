@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    [ShowOnly][SerializeField] private bool isInRange;
-    [SerializeField] private bool openByDefault;
     [ShowOnly][SerializeField] private bool isOpen;
+    [SerializeField] private bool isLock;
+    [SerializeField] private bool needKey;
+    [SerializeField] private bool openByDefault;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
     private Animator _animator;
@@ -16,11 +17,16 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] private bool smallDoor;
 
+    private InventoryManager _inventoryManager;
+    [SerializeField] private Item key;
+
     private void Awake()
     {
         if (smallDoor) return;
         _closeDoorFrame = transform.GetChild(0).GameObject();
         _openDoorFrame = transform.GetChild(1).GameObject();
+
+        _inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
     
     private void Start()
@@ -29,34 +35,43 @@ public class DoorController : MonoBehaviour
         _boxCollider2Ds = GetComponents<BoxCollider2D>();
         if (openByDefault)
             OpenDoorNoSound();
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        isInRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        isInRange = false;
+        if (openByDefault && (isLock || needKey))
+        {
+            Debug.LogWarning("Door properties is not correct.");
+        }
     }
 
     public void DoorInteract()
     {
-        switch (isOpen)
+        if (isOpen) return;
+        if (isLock)
         {
-            case true:
-                CloseDoor();
-                break;
-            default:
-                OpenDoor();
-                break;
+            if (needKey)
+            {
+                if (_inventoryManager.CheckItem(key))
+                {
+                    _inventoryManager.Remove(key);
+                    OpenDoor();
+                }
+                else
+                {
+                    Debug.Log("You do not have a key to this door.");
+                }
+            }
+            else
+            {
+                Debug.Log("This door is locked, but you do not see any keyhole.");
+            }
+        }
+        else
+        { 
+            OpenDoor();
         }
     }
 
     private void OpenDoor()
     {
-        if (!isInRange) return;
         if (isOpen) return;
         
         isOpen = true;
@@ -66,17 +81,16 @@ public class DoorController : MonoBehaviour
         DoorPropertiesChange();
     }
 
-    private void CloseDoor()
-    {        
-        if (!isInRange) return;
-        if (!isOpen) return;
-        
-        isOpen = false;
-        if (doorOpen)
-            AudioSource.PlayClipAtPoint(doorClose, transform.position);
-        
-        DoorPropertiesChange();
-    }
+    // private void CloseDoor()
+    // {        
+    //     if (!isOpen) return;
+    //     
+    //     isOpen = false;
+    //     if (doorOpen)
+    //         AudioSource.PlayClipAtPoint(doorClose, transform.position);
+    //     
+    //     DoorPropertiesChange();
+    // }
     
     private void OpenDoorNoSound()
     {
