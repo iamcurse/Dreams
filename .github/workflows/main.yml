@@ -76,6 +76,6 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4.0.4
-        inputs:
+        with:
           artifact_name: "Build-WebGL"
           
