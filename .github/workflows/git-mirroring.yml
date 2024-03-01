@@ -15,7 +15,7 @@ jobs:
           
       # Gitlab Sync
       - name: Gitlab Sync
-      - uses: action-pack/gitlab-sync@v3
+        uses: action-pack/gitlab-sync@v3
         with:
           username: ${{ github.actor }}
           url: https://gitlab.com/MrCurse/${{ github.repository }}.git
