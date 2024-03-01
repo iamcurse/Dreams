@@ -19,5 +19,4 @@ jobs:
         with:
           username: ${{ github.actor }}
           url: https://gitlab.com/MrCurse/${{ github.repository }}.git
-          # Personal access token from gitlab.com 
           token: ${{ secrets.GITLAB_TOKEN }}
