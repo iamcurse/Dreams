@@ -72,6 +72,12 @@ jobs:
       pages: write
       id-token: write 
     steps:
+      # Checkout              
+      - name: Checkout github-pages Branch
+        uses: actions/checkout@v4.1.1
+        with:
+          ref: github-pages
+    
       # Deploy
       - name: Deploy to GitHub Pages 🚀
         id: deployment
