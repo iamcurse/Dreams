@@ -4,8 +4,6 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     [ShowOnly][SerializeField] private bool isOpen;
-    [SerializeField] private bool isLock;
-    [SerializeField] private bool needKey;
     [SerializeField] private bool openByDefault;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
@@ -19,7 +17,9 @@ public class DoorController : MonoBehaviour
 
     private InventoryManager _inventoryManager;
     [SerializeField] private Item key;
-
+    
+    private InteractableObject _interactableObject;
+    
     private void Awake()
     {
         if (!smallDoor)
@@ -29,6 +29,7 @@ public class DoorController : MonoBehaviour
         }
 
         _inventoryManager = FindFirstObjectByType<InventoryManager>();
+        _interactableObject = GetComponent<InteractableObject>();
     }
     
     private void Start()
@@ -37,39 +38,14 @@ public class DoorController : MonoBehaviour
         _boxCollider2Ds = GetComponents<BoxCollider2D>();
         if (openByDefault)
             OpenDoorNoSound();
-
-        if (openByDefault && (isLock || needKey))
-        {
-            Debug.LogWarning("Door properties is not correct.");
-        }
     }
 
     public void DoorInteract()
     {
         if (isOpen) return;
-        if (isLock)
-        {
-            if (needKey)
-            {
-                if (_inventoryManager.CheckItem(key))
-                {
-                    _inventoryManager.Remove(key);
-                    OpenDoor();
-                }
-                else
-                {
-                    Debug.Log("You do not have a key to this door.");
-                }
-            }
-            else
-            {
-                Debug.Log("This door is locked, but you do not see any keyhole.");
-            }
-        }
-        else
-        { 
-            OpenDoor();
-        }
+        OpenDoor();
+        _inventoryManager.Remove(key);
+        _interactableObject.disable = true;
     }
 
     private void OpenDoor()
@@ -78,7 +54,11 @@ public class DoorController : MonoBehaviour
         
         isOpen = true;
         if (doorOpen)
+        {
             AudioSource.PlayClipAtPoint(doorOpen, transform.position);
+            Debug.Log("Sound Play");
+        }
+            
         
         DoorPropertiesChange();
     }
