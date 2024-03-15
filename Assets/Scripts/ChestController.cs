@@ -34,6 +34,7 @@ public class ChestController : MonoBehaviour
             AudioSource.PlayClipAtPoint(audioClip, transform.position);
 
         DialogueLua.SetVariable("ItemName", item.itemName);
+        DialogueLua.SetVariable("ItemID", item.id);
         
         var vowel = item.itemName.Substring(0, 1).ToUpper();
         if (vowel is "A" or "E" or "I" or "O" or "U") {
@@ -42,11 +43,9 @@ public class ChestController : MonoBehaviour
             DialogueLua.SetVariable("ItemNameDialogue", "a " + item.itemName);
         }
         
-        var a = DialogueLua.GetItemField(item.itemName, "Amount").asInt;
-        DialogueLua.SetItemField(item.itemName, "Amount", a + 1);
-        chestItem.Invoke();
-        
         isOpen = true;
+        
+        chestItem.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -61,6 +60,6 @@ public class ChestController : MonoBehaviour
 
     public void AddItem()
     {
-        _inventoryManager.Add(item);
+        _inventoryManager.AddItem(item);
     }
 }

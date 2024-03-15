@@ -79,25 +79,7 @@ MonoBehaviour:
     spritePortrait: {fileID: 0}
     alternatePortraits: []
     spritePortraits: []
-  items:
-  - id: 1
-    fields:
-    - title: Name
-      value: Key
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Is Item
-      value: True
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Amount
-      value: 0
-      type: 1
-      typeString: CustomFieldType_Number
+  items: []
   locations: []
   variables:
   - id: 1
@@ -110,20 +92,6 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 2
-    fields:
-    - title: Name
-      value: Key
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 0
-      type: 1
-      typeString: CustomFieldType_Number
     - title: Description
       value: 
       type: 0
@@ -152,6 +120,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 5
+    fields:
+    - title: Name
+      value: ItemID
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 0
+      type: 1
+      typeString: CustomFieldType_Number
     - title: Description
       value: 
       type: 0
@@ -462,7 +444,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 155.90723
+        x: 156.80008
         y: 100.96907
         width: 160
         height: 30
@@ -489,7 +471,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Do you want to use Key to unlock?
+        value: Do you want to use [var=ItemName] to unlock the door?
         type: 0
         typeString: 
       - title: Sequence
@@ -516,7 +498,7 @@ MonoBehaviour:
         destinationDialogueID: 4
         isConnector: 0
         priority: 2
-      conditionsString: CheckKey()  == true
+      conditionsString: CheckItem(Variable["ItemID"])  == true
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -524,7 +506,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 158.90541
-        y: 166.169
+        y: 164.3833
         width: 160
         height: 30
     - id: 3
@@ -632,7 +614,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 266.1219
-        y: 237.68045
+        y: 236.7876
         width: 160
         height: 30
     - id: 5
@@ -682,9 +664,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'Variable["Key"] = Variable["Key"] - 1;
-
-        InteractResult()'
+      userScript: InteractResult()
       onExecute:
         m_PersistentCalls:
           m_Calls:
@@ -702,7 +682,7 @@ MonoBehaviour:
             m_CallState: 2
       canvasRect:
         serializedVersion: 2
-        x: 78.433014
+        x: 79.32587
         y: 303.08426
         width: 160
         height: 30
@@ -849,14 +829,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: InteractResult()
+      userScript: AddItem(Variable["ItemID"])
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 235
-        y: 130
+        x: 236
+        y: 127
         width: 160
         height: 30
     entryGroups: []

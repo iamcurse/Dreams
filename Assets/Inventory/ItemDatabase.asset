@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbbc84c70300ba489dc1fe1961516ec, type: 3}
-  m_Name: New Custom Lua Function Info
+  m_Script: {fileID: 11500000, guid: 83b6dfaa5c1368a40be59bd789846fc6, type: 3}
+  m_Name: ItemDatabase
   m_EditorClassIdentifier: 
-  conditionFunctions:
-  - functionName: CheckKey
-    parameters: 
-    returnValue: 1
-  scriptFunctions:
-  - functionName: InteractResult
-    parameters: 
-    returnValue: 0
+  items:
+  - {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}

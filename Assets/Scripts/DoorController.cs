@@ -1,6 +1,7 @@
 using PixelCrushers.DialogueSystem;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class DoorController : MonoBehaviour
 
     private InventoryManager _inventoryManager;
     [SerializeField] private Item key;
-    
-    private InteractableObject _interactableObject;
+    [SerializeField] private UnityEvent doorInteract;
     
     private void Awake()
     {
@@ -30,7 +30,6 @@ public class DoorController : MonoBehaviour
         }
 
         _inventoryManager = FindFirstObjectByType<InventoryManager>();
-        _interactableObject = GetComponent<InteractableObject>();
     }
     
     private void Start()
@@ -40,29 +39,20 @@ public class DoorController : MonoBehaviour
         if (openByDefault)
             OpenDoorNoSound();
     }
-
-    private void OnEnable()
-    {
-        Lua.RegisterFunction("CheckKey", this, SymbolExtensions.GetMethodInfo(() => CheckKey()));
-    }
-
-    private void OnDisable()
-    {
-        Lua.UnregisterFunction("CheckKey");
-    }
-
-    private bool CheckKey()
-    {
-        return _inventoryManager.CheckItem(key);
-    }
     
     public void DoorInteract()
     {
+        if (isOpen) return;
+        
+        DialogueLua.SetVariable("ItemName", key.itemName);
+        DialogueLua.SetVariable("ItemID", key.id);
+        
+        doorInteract.Invoke();
+    }
+    public void DoorInteractResult()
+    {
         OpenDoor();
-        _inventoryManager.Remove(key);
-        var a = DialogueLua.GetItemField("Key", "Amount").asInt;
-        DialogueLua.SetItemField("Key", "Amount", a - 1);
-        _interactableObject.disable = true;
+        _inventoryManager.RemoveItem(key);
     }
 
     private void OpenDoor()
