@@ -43,6 +43,11 @@ public class InventoryManager : MonoBehaviour
         return inventory.items.Contains(item);
     }
     
+    public int CheckAmount(Item item)
+    {
+        return inventory.items.FindAll(x => x == item).Count;
+    }
+    
     public void Remove(Item item) {
         inventory.items.Remove(item);
     }

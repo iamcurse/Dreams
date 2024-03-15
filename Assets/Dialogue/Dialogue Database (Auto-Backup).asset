@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: Dialogue Database
+  m_Name: Dialogue Database (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
@@ -79,25 +79,7 @@ MonoBehaviour:
     spritePortrait: {fileID: 0}
     alternatePortraits: []
     spritePortraits: []
-  items:
-  - id: 1
-    fields:
-    - title: Name
-      value: Key
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Is Item
-      value: True
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Amount
-      value: 0
-      type: 1
-      typeString: CustomFieldType_Number
+  items: []
   locations: []
   variables:
   - id: 1
@@ -124,34 +106,6 @@ MonoBehaviour:
       value: 0
       type: 1
       typeString: CustomFieldType_Number
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 3
-    fields:
-    - title: Name
-      value: ItemName
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 4
-    fields:
-    - title: Name
-      value: ItemNameDialogue
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
     - title: Description
       value: 
       type: 0
@@ -516,7 +470,7 @@ MonoBehaviour:
         destinationDialogueID: 4
         isConnector: 0
         priority: 2
-      conditionsString: CheckKey()  == true
+      conditionsString: Variable["Key"] > 0
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -524,7 +478,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 158.90541
-        y: 166.169
+        y: 167.06186
         width: 160
         height: 30
     - id: 3
@@ -707,12 +661,12 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 35.534695, y: 17.49207}
-    canvasZoom: 1.1199999
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.97
   - id: 3
     fields:
     - title: Title
-      value: Found Item
+      value: Found Key
       type: 0
       typeString: 
     - title: Description
@@ -833,7 +787,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You found [var=ItemNameDialogue]
+        value: You found a Key
         type: 0
         typeString: 
       - title: Sequence
@@ -849,14 +803,16 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: InteractResult()
+      userScript: 'Variable["Key"] = Variable["Key"] + 1;
+
+        InteractResult()'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 235
-        y: 130
+        x: 237
+        y: 120
         width: 160
         height: 30
     entryGroups: []

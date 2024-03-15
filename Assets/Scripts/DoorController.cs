@@ -1,3 +1,4 @@
+using PixelCrushers.DialogueSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -40,11 +41,27 @@ public class DoorController : MonoBehaviour
             OpenDoorNoSound();
     }
 
+    private void OnEnable()
+    {
+        Lua.RegisterFunction("CheckKey", this, SymbolExtensions.GetMethodInfo(() => CheckKey()));
+    }
+
+    private void OnDisable()
+    {
+        Lua.UnregisterFunction("CheckKey");
+    }
+
+    private bool CheckKey()
+    {
+        return _inventoryManager.CheckItem(key);
+    }
+    
     public void DoorInteract()
     {
-        if (isOpen) return;
         OpenDoor();
         _inventoryManager.Remove(key);
+        var a = DialogueLua.GetItemField("Key", "Amount").asInt;
+        DialogueLua.SetItemField("Key", "Amount", a - 1);
         _interactableObject.disable = true;
     }
 
@@ -54,11 +71,7 @@ public class DoorController : MonoBehaviour
         
         isOpen = true;
         if (doorOpen)
-        {
             AudioSource.PlayClipAtPoint(doorOpen, transform.position);
-            Debug.Log("Sound Play");
-        }
-            
         
         DoorPropertiesChange();
     }

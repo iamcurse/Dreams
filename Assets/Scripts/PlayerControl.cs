@@ -108,7 +108,8 @@ public class PlayerControl : MonoBehaviour
             return;
         _interactableObject.Interact();
     }
-    public void InteractResult()
+
+    private void InteractResult()
     {
         _interactableObject.InteractResult();
     }
