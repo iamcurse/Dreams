@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         _inventoryUI = this.gameObject.transform;
+        ClearInventory();
     }
 
     private void FixedUpdate() {
@@ -69,5 +70,9 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
         }
+    }
+    public void ClearInventory()
+    {
+        inventory.items.Clear();
     }
 }

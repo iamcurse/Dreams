@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +5,7 @@ public class ChestController : MonoBehaviour
 {
     [ShowOnly][SerializeField] private bool isInRange;
     [ShowOnly][SerializeField] private bool isOpen;
+    [SerializeField] private Item item;
     [SerializeField] private AudioClip audioClip;
     private Animator _animator;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
@@ -47,9 +47,8 @@ public class ChestController : MonoBehaviour
         isInRange = false;
     }
 
-    public void AddItem(Item item)
+    public void AddItem()
     {
-            
         _inventoryManager.Add(item);
     }
 }

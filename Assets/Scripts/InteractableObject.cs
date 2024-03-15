@@ -5,6 +5,8 @@ public class InteractableObject : MonoBehaviour
 {
     [ShowOnly][SerializeField] private bool isInRange;
     [SerializeField] private UnityEvent interaction;
+    [SerializeField] private UnityEvent interactionResult;
+    [HideInInspector] public bool disable;
     private void OnTriggerEnter2D(Collider2D other)
     {
         isInRange = true;
@@ -18,7 +20,13 @@ public class InteractableObject : MonoBehaviour
     public void Interact()
     {
         if (!isInRange) return;
+        if (disable) return;
         
         interaction.Invoke();
-    } 
+    }
+
+    public void InteractResult()
+    {
+        interactionResult.Invoke();
+    }
 }

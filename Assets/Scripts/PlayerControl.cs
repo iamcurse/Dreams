@@ -1,3 +1,4 @@
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     private Vector2 _movementInput;
     private PlayerController _playerController;
     private InputAction _move;
+    [HideInInspector] public bool lockMovement;
     
     private InputAction _interact;
     private InteractableObject _interactableObject;
@@ -18,14 +20,17 @@ public class PlayerControl : MonoBehaviour
     private static readonly int MoveX = Animator.StringToHash("MoveX");
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
-    private UIController _uiController;
+    [HideInInspector] public UIController uiController;
 
-    public InventoryManager inventoryManager;
+    [HideInInspector] public InventoryManager inventoryManager;
+
+    public bool dialogueOpen;
+    public bool menuOpen;
 
     private void Awake()
     {
         _playerController = new PlayerController();
-        _uiController = FindFirstObjectByType<UIController>();
+        uiController = FindFirstObjectByType<UIController>();
         _move = _playerController.Player.Move;
         _interact = _playerController.Player.Interact;
 
@@ -40,17 +45,21 @@ public class PlayerControl : MonoBehaviour
 
     private void OnEnable()
     {
-        _uiController.ShowControlUI();
+        uiController.ShowControlUI();
         _move.Enable();
         _interact.Enable();
+        
+        Lua.RegisterFunction("InteractResult", this, SymbolExtensions.GetMethodInfo(() => InteractResult()));
     }
 
     private void OnDisable()
     {
-        if (_uiController)
-            _uiController.HideControlUI();
+        if (uiController)
+            uiController.HideControlUI();
         _move.Disable();
         _interact.Disable();
+        
+        Lua.UnregisterFunction("InteractResult");
     }
 
     private void FixedUpdate()
@@ -85,7 +94,7 @@ public class PlayerControl : MonoBehaviour
     
     public void OnInteract()
     {
-        if (!_uiController.onMobile)
+        if (!uiController.onMobile)
             Interact();
     }
 
@@ -93,6 +102,14 @@ public class PlayerControl : MonoBehaviour
     {
         if (!isInRange)
             return;
+        if (dialogueOpen)
+            return;
+        if (menuOpen)
+            return;
         _interactableObject.Interact();
+    }
+    public void InteractResult()
+    {
+        _interactableObject.InteractResult();
     }
 }

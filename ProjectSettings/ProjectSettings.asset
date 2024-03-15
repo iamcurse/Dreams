@@ -657,7 +657,11 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: TMP_PRESENT;USE_PHYSICS2D;USE_NEW_INPUT;USE_CINEMACHINE
+    Standalone: TMP_PRESENT;USE_PHYSICS2D;USE_NEW_INPUT;USE_CINEMACHINE
+    WebGL: TMP_PRESENT;USE_PHYSICS2D;USE_NEW_INPUT;USE_CINEMACHINE
+    Windows Store Apps: TMP_PRESENT;USE_PHYSICS2D;USE_NEW_INPUT;USE_CINEMACHINE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
