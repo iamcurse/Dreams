@@ -394,10 +394,9 @@ MonoBehaviour:
   interaction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7200818510420478511}
-        m_TargetAssemblyTypeName: PixelCrushers.DialogueSystem.DialogueSystemTrigger,
-          Assembly-CSharp-firstpass
-        m_MethodName: OnUse
+      - m_Target: {fileID: 8291540811196424767}
+        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
+        m_MethodName: DoorInteract
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -412,7 +411,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8291540811196424767}
         m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: DoorInteract
+        m_MethodName: DoorInteractResult
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -435,12 +434,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1621dec22943845956a243f5c99a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
   isOpen: 0
   openByDefault: 0
   doorOpen: {fileID: 8300000, guid: 98217b7ca18e3004c94b3f86837a5c32, type: 3}
   doorClose: {fileID: 8300000, guid: 96162d596e710b544a434fc710d8ec85, type: 3}
   smallDoor: 1
-  key: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+  keyItem: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+  doorInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7200818510420478511}
+        m_TargetAssemblyTypeName: PixelCrushers.DialogueSystem.DialogueSystemTrigger,
+          Assembly-CSharp-firstpass
+        m_MethodName: OnUse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7200818510420478511
 MonoBehaviour:
   m_ObjectHideFlags: 0

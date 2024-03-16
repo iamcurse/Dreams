@@ -83,8 +83,9 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Objects")) return;
-        _interactableObject = other.GetComponent<InteractableObject>();
         isInRange = true;
+        
+        _interactableObject = other.GetComponent<InteractableObject>();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -108,7 +109,8 @@ public class PlayerControl : MonoBehaviour
             return;
         _interactableObject.Interact();
     }
-    public void InteractResult()
+
+    private void InteractResult()
     {
         _interactableObject.InteractResult();
     }

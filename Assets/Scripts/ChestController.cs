@@ -1,3 +1,4 @@
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,24 +32,25 @@ public class ChestController : MonoBehaviour
         _animator.SetTrigger(IsOpen);
         if (audioClip)
             AudioSource.PlayClipAtPoint(audioClip, transform.position);
+
+        DialogueLua.SetVariable("ItemName", item.itemName);
+        DialogueLua.SetVariable("ItemID", item.id);
+        
+        var vowel = item.itemName.Substring(0, 1).ToUpper();
+        DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
+
+        isOpen = true;
         
         chestItem.Invoke();
-        
-        isOpen = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.gameObject.CompareTag("Player")) return;
         isInRange = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        isInRange = false;
-    }
+    private void OnTriggerExit2D(Collider2D other) => isInRange = false;
 
-    public void AddItem()
-    {
-        _inventoryManager.Add(item);
-    }
+    public void AddItem() => _inventoryManager.AddItem(item);
 }

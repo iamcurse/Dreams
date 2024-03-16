@@ -7,15 +7,13 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private UnityEvent interaction;
     [SerializeField] private UnityEvent interactionResult;
     [HideInInspector] public bool disable;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.gameObject.CompareTag("Player")) return;
         isInRange = true;
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        isInRange = false;
-    }
+    private void OnTriggerExit2D(Collider2D other) => isInRange = false;
 
     public void Interact()
     {
@@ -25,8 +23,6 @@ public class InteractableObject : MonoBehaviour
         interaction.Invoke();
     }
 
-    public void InteractResult()
-    {
-        interactionResult.Invoke();
-    }
+    public void InteractResult() => interactionResult.Invoke();
+    
 }

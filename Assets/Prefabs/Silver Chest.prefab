@@ -231,19 +231,7 @@ MonoBehaviour:
         m_CallState: 2
   interactionResult:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4355811728796697475}
-        m_TargetAssemblyTypeName: ChestController, Assembly-CSharp
-        m_MethodName: AddItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   disable: 0
 --- !u!114 &4355811728796697475
 MonoBehaviour:
@@ -327,7 +315,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Found Key
+  conversation: Found Item
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1

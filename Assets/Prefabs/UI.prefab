@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: d7d9eb22fd7218244a39f6a03aabd105, type: 2}
   inventoryItemTemplate: {fileID: 8474427759438952332, guid: 9447f55268e6a744fa72e50af5329071, type: 3}
+  itemDatabase: {fileID: 11400000, guid: 58028b360d15cd84a9cd9ef47adb7aad, type: 2}
 --- !u!1 &4512677001683055376
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +715,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: initialDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: bfcbe7e318cfcfb49856e37763af0516, type: 2}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.defaultCanvas
       value: 
       objectReference: {fileID: 6516805944858012925}
@@ -732,6 +737,10 @@ PrefabInstance:
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.informSequenceStartAndEnd
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.subtitleSettings.requireContinueOnLastLine
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.showPCSubtitlesDuringLine

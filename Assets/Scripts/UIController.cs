@@ -44,12 +44,10 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        if (onMobile)
-        {
-            if (_playerControl.gameObject.activeSelf)
-                ShowControlUI();
-            _fullscreenUI.SetActive(true);
-        }
+        if (!onMobile) return;
+        if (_playerControl.gameObject.activeSelf)
+            ShowControlUI();
+        _fullscreenUI.SetActive(true);
     }
 
     public void ShowControlUI()
@@ -64,13 +62,7 @@ public class UIController : MonoBehaviour
             _mobileUI.SetActive(false);
     }
     
-    public void Fullscreen()
-    {
-        Screen.fullScreen = !Screen.fullScreen;
-    }
+    public void Fullscreen() => Screen.fullScreen = !Screen.fullScreen;
 
-    public void MobileInteract()
-    {
-        _playerControl.Interact();
-    }
+    public void MobileInteract() => _playerControl.Interact();
 }

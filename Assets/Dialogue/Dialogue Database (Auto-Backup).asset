@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: Dialogue Database
+  m_Name: Dialogue Database (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
   description: 
   globalUserScript: 
   emphasisSettings:
-  - color: {r: 1, g: 0.6412373, b: 0, a: 1}
-    bold: 1
+  - color: {r: 1, g: 1, b: 1, a: 1}
+    bold: 0
     italic: 0
     underline: 0
-  - color: {r: 0, g: 1, b: 0.46605062, a: 1}
-    bold: 1
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    bold: 0
     italic: 0
     underline: 0
   - color: {r: 0, g: 1, b: 0, a: 1}
@@ -96,38 +96,10 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
-  - id: 3
+  - id: 2
     fields:
     - title: Name
-      value: ItemName
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 4
-    fields:
-    - title: Name
-      value: ItemArticle
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 5
-    fields:
-    - title: Name
-      value: ItemID
+      value: Key
       type: 0
       typeString: 
     - title: Initial Value
@@ -245,13 +217,13 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Description
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Actor
-        value: 1
+        value: -1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -261,15 +233,15 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Dialogue Text
         value: The sign say something.
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Sequence
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       conversationID: 1
       isRoot: 0
       isGroup: 0
@@ -285,7 +257,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 159.80847
+        x: 160.87231
         y: 111.95744
         width: 160
         height: 30
@@ -389,8 +361,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 120
-        y: 20
+        x: 159
+        y: 28
         width: 160
         height: 30
     - id: 1
@@ -416,7 +388,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]door[/em2] is locked.
+        value: The door is locked
         type: 0
         typeString: 
       - title: Sequence
@@ -444,8 +416,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 120
-        y: 69.10715
+        x: 155.90723
+        y: 100.96907
         width: 160
         height: 30
     - id: 2
@@ -471,7 +443,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Do you want to use [em1][var=ItemName][/em1] to unlock the door?
+        value: Do you want to use Key to unlock?
         type: 0
         typeString: 
       - title: Sequence
@@ -498,15 +470,15 @@ MonoBehaviour:
         destinationDialogueID: 4
         isConnector: 0
         priority: 2
-      conditionsString: CheckItem(Variable["ItemID"])  == true
+      conditionsString: Variable["Key"] > 0
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 120
-        y: 120
+        x: 158.90541
+        y: 167.06186
         width: 160
         height: 30
     - id: 3
@@ -564,8 +536,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 170
+        x: 80.49486
+        y: 234.52753
         width: 160
         height: 30
     - id: 4
@@ -613,8 +585,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
-        y: 170
+        x: 266.1219
+        y: 237.68045
         width: 160
         height: 30
     - id: 5
@@ -640,7 +612,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You unlocked the door.
+        value: You unlocked the door
         type: 0
         typeString: 
       - title: Sequence
@@ -662,15 +634,9 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 2
-        originDialogueID: 5
-        destinationConversationID: 2
-        destinationDialogueID: 6
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
-      userScript: 'RemoveItem(0);
+      userScript: 'Variable["Key"] = Variable["Key"] - 1;
 
         InteractResult()'
       onExecute:
@@ -690,66 +656,17 @@ MonoBehaviour:
             m_CallState: 2
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 220
-        width: 160
-        height: 30
-    - id: 6
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: 
-      - title: Description
-        value: 
-        type: 0
-        typeString: 
-      - title: Actor
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: 
-      - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been removed from your inventory.'
-        type: 0
-        typeString: 
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: 
-      conversationID: 2
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 30
-        y: 270
+        x: 78.433014
+        y: 303.08426
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1.1199999
+    canvasZoom: 0.97
   - id: 3
     fields:
     - title: Title
-      value: Found Item
+      value: Found Key
       type: 0
       typeString: 
     - title: Description
@@ -870,62 +787,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You found [var=ItemArticle] [em1][var=ItemName][/em1]
-        type: 0
-        typeString: 
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: 
-      conversationID: 3
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 3
-        originDialogueID: 1
-        destinationConversationID: 3
-        destinationDialogueID: 2
-        isConnector: 0
-        priority: 2
-      conditionsString: 
-      userScript: AddItem(Variable["ItemID"])
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 237
-        y: 126
-        width: 160
-        height: 30
-    - id: 2
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: 
-      - title: Description
-        value: 
-        type: 0
-        typeString: 
-      - title: Actor
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: 
-      - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been added to your inventory.'
+        value: You found a Key
         type: 0
         typeString: 
       - title: Sequence
@@ -941,14 +803,16 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: 'Variable["Key"] = Variable["Key"] + 1;
+
+        InteractResult()'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 237
-        y: 180
+        y: 120
         width: 160
         height: 30
     entryGroups: []
