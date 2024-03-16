@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
+    [ShowOnly] [SerializeField] private bool isInRange;
     [ShowOnly][SerializeField] private bool isOpen;
     [SerializeField] private bool openByDefault;
     [SerializeField] private AudioClip doorOpen;
@@ -16,20 +17,15 @@ public class DoorController : MonoBehaviour
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
 
     [SerializeField] private bool smallDoor;
-
-    private InventoryManager _inventoryManager;
-    [SerializeField] private Item key;
+    
+    [SerializeField] private Item keyItem;
     [SerializeField] private UnityEvent doorInteract;
     
     private void Awake()
     {
-        if (!smallDoor)
-        {
-            _closeDoorFrame = transform.GetChild(0).GameObject();
-            _openDoorFrame = transform.GetChild(1).GameObject();
-        }
-
-        _inventoryManager = FindFirstObjectByType<InventoryManager>();
+        if (smallDoor) return;
+        _closeDoorFrame = transform.GetChild(0).GameObject();
+        _openDoorFrame = transform.GetChild(1).GameObject();
     }
     
     private void Start()
@@ -40,19 +36,27 @@ public class DoorController : MonoBehaviour
             OpenDoorNoSound();
     }
     
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.gameObject.CompareTag("Player")) return;
+        isInRange = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) => isInRange = false;
+    
     public void DoorInteract()
     {
         if (isOpen) return;
+        if (!isInRange) return;
         
-        DialogueLua.SetVariable("ItemName", key.itemName);
-        DialogueLua.SetVariable("ItemID", key.id);
+        DialogueLua.SetVariable("ItemName", keyItem.itemName);
+        DialogueLua.SetVariable("ItemID", keyItem.id);
         
         doorInteract.Invoke();
     }
     public void DoorInteractResult()
     {
-        OpenDoor();
-        _inventoryManager.RemoveItem(key);
+        DoorChange();
     }
 
     private void OpenDoor()
@@ -66,16 +70,29 @@ public class DoorController : MonoBehaviour
         DoorPropertiesChange();
     }
 
-    // private void CloseDoor()
-    // {        
-    //     if (!isOpen) return;
-    //     
-    //     isOpen = false;
-    //     if (doorOpen)
-    //         AudioSource.PlayClipAtPoint(doorClose, transform.position);
-    //     
-    //     DoorPropertiesChange();
-    // }
+    private void CloseDoor()
+    {        
+        if (!isOpen) return;
+        
+        isOpen = false;
+        if (doorOpen)
+            AudioSource.PlayClipAtPoint(doorClose, transform.position);
+        
+        DoorPropertiesChange();
+    }
+
+    private void DoorChange()
+    {
+        switch (isOpen)
+        {
+            case true:
+                CloseDoor();
+                break;
+            default:
+                OpenDoor();
+                break;
+        }
+    }
     
     private void OpenDoorNoSound()
     {

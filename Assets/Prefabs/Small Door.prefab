@@ -434,12 +434,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1621dec22943845956a243f5c99a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
   isOpen: 0
   openByDefault: 0
   doorOpen: {fileID: 8300000, guid: 98217b7ca18e3004c94b3f86837a5c32, type: 3}
   doorClose: {fileID: 8300000, guid: 96162d596e710b544a434fc710d8ec85, type: 3}
   smallDoor: 1
-  key: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+  keyItem: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
   doorInteract:
     m_PersistentCalls:
       m_Calls:

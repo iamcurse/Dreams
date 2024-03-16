@@ -37,12 +37,8 @@ public class ChestController : MonoBehaviour
         DialogueLua.SetVariable("ItemID", item.id);
         
         var vowel = item.itemName.Substring(0, 1).ToUpper();
-        if (vowel is "A" or "E" or "I" or "O" or "U") {
-            DialogueLua.SetVariable("ItemNameDialogue", "an " + item.itemName);
-        } else {
-            DialogueLua.SetVariable("ItemNameDialogue", "a " + item.itemName);
-        }
-        
+        DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
+
         isOpen = true;
         
         chestItem.Invoke();
@@ -50,16 +46,11 @@ public class ChestController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.gameObject.CompareTag("Player")) return;
         isInRange = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        isInRange = false;
-    }
+    private void OnTriggerExit2D(Collider2D other) => isInRange = false;
 
-    public void AddItem()
-    {
-        _inventoryManager.AddItem(item);
-    }
+    public void AddItem() => _inventoryManager.AddItem(item);
 }

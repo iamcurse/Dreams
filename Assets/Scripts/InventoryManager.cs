@@ -31,6 +31,7 @@ public class InventoryManager : MonoBehaviour
         Lua.RegisterFunction("CheckItem", this, SymbolExtensions.GetMethodInfo(() => CheckItem(0)));
         Lua.RegisterFunction("CheckItemAmount", this, SymbolExtensions.GetMethodInfo(() => CheckItemAmount(0)));
         Lua.RegisterFunction("RemoveItem", this, SymbolExtensions.GetMethodInfo(() => RemoveItem(0)));
+        Lua.RegisterFunction("ClearInventory", this, SymbolExtensions.GetMethodInfo(() => ClearInventory()));
     }
 
     private void OnDisable()
@@ -39,46 +40,37 @@ public class InventoryManager : MonoBehaviour
         Lua.UnregisterFunction("CheckItem");
         Lua.UnregisterFunction("CheckItemAmount");
         Lua.UnregisterFunction("RemoveItem");
+        Lua.UnregisterFunction("ClearInventory");
     }
 
-    private void FixedUpdate() {
-        ListItems();
-    }
+    private void FixedUpdate() => ListItems();
 
-    public void AddItem(Item item)
-    {
-        inventory.items.Add(item);
-    }
-    public void AddItem(double itemID)
+    public void AddItem(Item item) => inventory.items.Add(item);
+
+    private void AddItem(double itemID)
     {
         var item = itemDatabase.items[(int)itemID];
         inventory.items.Add(item);
     }
     
-    public bool CheckItem(Item item)
-    {
-        return inventory.items.Contains(item);
-    }
+    public bool CheckItem(Item item) => inventory.items.Contains(item);
 
-    public bool CheckItem(double itemID)
+    private bool CheckItem(double itemID)
     {
         var item = itemDatabase.items[(int)itemID];
         return inventory.items.Contains(item);
     }
-    public int CheckItemAmount(Item item)
-    {
-        return inventory.items.FindAll(x => x == item).Count;
-    }
-    public double CheckItemAmount(double itemID)
+    public int CheckItemAmount(Item item) => inventory.items.FindAll(x => x == item).Count;
+
+    private double CheckItemAmount(double itemID)
     {
         var item = itemDatabase.items[(int)itemID];
         return inventory.items.FindAll(x => x == item).Count;
     }
     
-    public void RemoveItem(Item item) {
-        inventory.items.Remove(item);
-    }
-    public void RemoveItem(double itemID) {
+    public void RemoveItem(Item item) => inventory.items.Remove(item);
+
+    private void RemoveItem(double itemID) {
         var item = itemDatabase.items[(int)itemID];
         inventory.items.Remove(item);
     }
@@ -107,8 +99,6 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-    public void ClearInventory()
-    {
-        inventory.items.Clear();
-    }
+
+    private void ClearInventory() => inventory.items.Clear();
 }
