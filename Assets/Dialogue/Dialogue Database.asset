@@ -96,6 +96,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 6
+    fields:
+    - title: Name
+      value: GameObjectName
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: Name of the game object name whose Dialogue run on
+      type: 0
+      typeString: 
   - id: 3
     fields:
     - title: Name
@@ -107,7 +121,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: 
+      value: Item name for reference in dialogue
       type: 0
       typeString: 
   - id: 4
@@ -121,7 +135,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: 
+      value: A or An
       type: 0
       typeString: 
   - id: 5
@@ -135,7 +149,7 @@ MonoBehaviour:
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
-      value: 
+      value: ID of the item to be reference the ScriptableObject
       type: 0
       typeString: 
   conversations:
@@ -564,7 +578,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 30.892853
         y: 170
         width: 160
         height: 30
@@ -670,9 +684,9 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'RemoveItem(0);
+      userScript: 'RemoveItem(Variable["ItemID"]);
 
-        InteractResult()'
+        DoorControl(Variable["GameObjectName"])'
       onExecute:
         m_PersistentCalls:
           m_Calls:
@@ -690,8 +704,8 @@ MonoBehaviour:
             m_CallState: 2
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 220
+        x: 29.107147
+        y: 218.21426
         width: 160
         height: 30
     - id: 6
@@ -740,7 +754,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 270
+        y: 269.10715
         width: 160
         height: 30
     entryGroups: []
@@ -749,7 +763,7 @@ MonoBehaviour:
   - id: 3
     fields:
     - title: Title
-      value: Found Item
+      value: Found Item (Chest)
       type: 0
       typeString: 
     - title: Description
@@ -892,14 +906,16 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: AddItem(Variable["ItemID"])
+      userScript: 'AddItem(Variable["ItemID"]);
+
+        OpenChest(Variable["GameObjectName"])'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 237
-        y: 126
+        x: 238
+        y: 125
         width: 160
         height: 30
     - id: 2
@@ -947,8 +963,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 237
-        y: 180
+        x: 236
+        y: 182
         width: 160
         height: 30
     entryGroups: []

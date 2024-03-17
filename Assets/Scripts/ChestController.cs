@@ -10,38 +10,21 @@ public class ChestController : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     private Animator _animator;
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
-    [SerializeField] private UnityEvent chestItem;
-
-    private InventoryManager _inventoryManager;
-
-    private void Awake()
-    {
-        _inventoryManager = FindFirstObjectByType<InventoryManager>();
-    }
+    [SerializeField] private UnityEvent dialogue;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
     }
 
-    public void OpenChest()
+    private void OnEnable()
     {
-        if (!isInRange) return;
-        if (isOpen) return;
-        
-        _animator.SetTrigger(IsOpen);
-        if (audioClip)
-            AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        Lua.RegisterFunction("OpenChest", this, SymbolExtensions.GetMethodInfo(() => OpenChest("")));
+    }
 
-        DialogueLua.SetVariable("ItemName", item.itemName);
-        DialogueLua.SetVariable("ItemID", item.id);
-        
-        var vowel = item.itemName.Substring(0, 1).ToUpper();
-        DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
-
-        isOpen = true;
-        
-        chestItem.Invoke();
+    private void OnDisable()
+    {
+        Lua.UnregisterFunction("OpenChest");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,8 +32,36 @@ public class ChestController : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
         isInRange = true;
     }
-
     private void OnTriggerExit2D(Collider2D other) => isInRange = false;
 
-    public void AddItem() => _inventoryManager.AddItem(item);
+    public void Interact()
+    {
+        if (!isInRange) return;
+        if (isOpen) return;
+
+        DialogueLua.SetVariable("GameObjectName", name);
+        DialogueLua.SetVariable("ItemName", item.itemName);
+        DialogueLua.SetVariable("ItemID", item.id);
+        
+        var vowel = item.itemName[..1].ToUpper();
+        DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
+        
+        dialogue.Invoke();
+    }
+
+    private void OpenChest()
+    {
+        if (!isInRange) return;
+        if (isOpen) return;
+        _animator.SetTrigger(IsOpen);
+        if (audioClip)
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        isOpen = true;
+    }
+
+    private static void OpenChest(string objectName)
+    {
+        var chestObject = SequencerTools.FindSpecifier(objectName).GetComponent<ChestController>();
+        chestObject.OpenChest();
+    }
 }

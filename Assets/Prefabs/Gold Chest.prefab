@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3447647641496403076}
         m_TargetAssemblyTypeName: ChestController, Assembly-CSharp
-        m_MethodName: OpenChest
+        m_MethodName: Interact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -229,9 +229,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  interactionResult:
-    m_PersistentCalls:
-      m_Calls: []
   disable: 0
 --- !u!114 &3447647641496403076
 MonoBehaviour:
@@ -247,9 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInRange: 0
   isOpen: 0
-  item: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+  item: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 83d49b0e5df53b140b5fa018830d39fd, type: 3}
-  chestItem:
+  dialogue:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3622132596757217023}
@@ -315,7 +312,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Found Item
+  conversation: Found Item (Chest)
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1

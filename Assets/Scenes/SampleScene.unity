@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992206468838350681, guid: ef7daa3c03adf2144b5ef0b522a9e07f, type: 3}
       propertyPath: interaction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8992206468838350681, guid: ef7daa3c03adf2144b5ef0b522a9e07f, type: 3}
       propertyPath: interactionResult.m_PersistentCalls.m_Calls.Array.size
@@ -3736,13 +3736,41 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5496833952292607233}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PixelCrushers.DialogueSystem.DialogueSystemTrigger, Assembly-CSharp-firstpass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385707218624866005, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+      propertyPath: dialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4609771444757457086, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
       propertyPath: interactionResult.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8511393713813699175, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
       propertyPath: m_Name
-      value: Chest
+      value: Backpack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3919,6 +3947,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 3447647641496403076, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a60b7ce2ca55241893bb265a8de25c, type: 2}
     - target: {fileID: 4860900204241900242, guid: cfe50a99df6e9254c9ea03086070f69a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.356
@@ -4069,6 +4101,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7b0490f7cc8824ab982f5f9e2c04c1, type: 3}
+--- !u!114 &5496833952292607233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6395869399289370885, guid: 8a2cb5e1d1973be41b735ee856d9c9e4, type: 3}
+  m_PrefabInstance: {fileID: 1480026282016771076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6457796134711785714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4269,7 +4312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: interactionResult.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DoorInteractResult
+      value: InteractResult
       objectReference: {fileID: 0}
     - target: {fileID: 8239076435809761178, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: interactionResult.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
