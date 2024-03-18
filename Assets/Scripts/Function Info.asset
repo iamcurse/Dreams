@@ -19,6 +19,9 @@ MonoBehaviour:
   - functionName: Inventory/CheckItemAmount
     parameters: 01000000
     returnValue: 2
+  - functionName: SwitchCurrentState
+    parameters: 02000000
+    returnValue: 1
   scriptFunctions:
   - functionName: Inventory/AddItem
     parameters: 01000000
@@ -30,5 +33,11 @@ MonoBehaviour:
     parameters: 02000000
     returnValue: 0
   - functionName: OpenChest
+    parameters: 02000000
+    returnValue: 0
+  - functionName: Switch/SwitchActivate
+    parameters: 02000000
+    returnValue: 0
+  - functionName: Switch/SwitchDeactivate
     parameters: 02000000
     returnValue: 0

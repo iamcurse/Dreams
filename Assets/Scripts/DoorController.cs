@@ -91,7 +91,7 @@ public class DoorController : MonoBehaviour
         DoorPropertiesChange();
     }
 
-    private void DoorControl()
+    public void DoorControl()
     {
         switch (isOpen)
         {
