@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2830866500308123492}
   - component: {fileID: 3808787258032099685}
   m_Layer: 7
-  m_Name: Small Chest
+  m_Name: Small Backpack
   m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2830866500308123492}
         m_TargetAssemblyTypeName: ChestController, Assembly-CSharp
-        m_MethodName: OpenChest
+        m_MethodName: Interact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -229,9 +229,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  interactionResult:
-    m_PersistentCalls:
-      m_Calls: []
   disable: 0
 --- !u!114 &2830866500308123492
 MonoBehaviour:
@@ -248,8 +245,8 @@ MonoBehaviour:
   isInRange: 0
   isOpen: 0
   item: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 83d49b0e5df53b140b5fa018830d39fd, type: 3}
-  chestItem:
+  audioClip: {fileID: 8300000, guid: 0c12a144ae2268946ab0bcbd8ab933ea, type: 3}
+  dialogue:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3808787258032099685}
@@ -315,7 +312,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Found Item
+  conversation: Found Item (Chest)
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1

@@ -35,28 +35,38 @@ public class DoorController : MonoBehaviour
         if (openByDefault)
             OpenDoorNoSound();
     }
-    
+
+    private void OnEnable()
+    {
+        Lua.RegisterFunction("DoorControl", this, SymbolExtensions.GetMethodInfo(() => DoorControl("")));
+    }
+
+    private void OnDisable()
+    {
+        Lua.UnregisterFunction("DoorControl");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
         isInRange = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other) => isInRange = false;
-    
-    public void DoorInteract()
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        isInRange = false;
+    }
+
+    public void Interact()
     {
         if (isOpen) return;
         if (!isInRange) return;
         
+        DialogueLua.SetVariable("GameObjectName", name);
         DialogueLua.SetVariable("ItemName", keyItem.itemName);
         DialogueLua.SetVariable("ItemID", keyItem.id);
         
         doorInteract.Invoke();
-    }
-    public void DoorInteractResult()
-    {
-        DoorChange();
     }
 
     private void OpenDoor()
@@ -81,7 +91,7 @@ public class DoorController : MonoBehaviour
         DoorPropertiesChange();
     }
 
-    private void DoorChange()
+    public void DoorControl()
     {
         switch (isOpen)
         {
@@ -92,6 +102,11 @@ public class DoorController : MonoBehaviour
                 OpenDoor();
                 break;
         }
+    }
+    private static void DoorControl(string objectName)
+    {
+        var doorObject = SequencerTools.FindSpecifier(objectName).GetComponent<DoorController>();
+        doorObject.DoorControl();
     }
     
     private void OpenDoorNoSound()

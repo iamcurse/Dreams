@@ -1,4 +1,3 @@
-using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,8 +47,6 @@ public class PlayerControl : MonoBehaviour
         uiController.ShowControlUI();
         _move.Enable();
         _interact.Enable();
-        
-        Lua.RegisterFunction("InteractResult", this, SymbolExtensions.GetMethodInfo(() => InteractResult()));
     }
 
     private void OnDisable()
@@ -58,8 +55,6 @@ public class PlayerControl : MonoBehaviour
             uiController.HideControlUI();
         _move.Disable();
         _interact.Disable();
-        
-        Lua.UnregisterFunction("InteractResult");
     }
 
     private void FixedUpdate()
@@ -108,10 +103,5 @@ public class PlayerControl : MonoBehaviour
         if (menuOpen)
             return;
         _interactableObject.Interact();
-    }
-
-    private void InteractResult()
-    {
-        _interactableObject.InteractResult();
     }
 }

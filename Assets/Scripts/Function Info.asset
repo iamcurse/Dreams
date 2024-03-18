@@ -19,13 +19,25 @@ MonoBehaviour:
   - functionName: Inventory/CheckItemAmount
     parameters: 01000000
     returnValue: 2
+  - functionName: SwitchCurrentState
+    parameters: 02000000
+    returnValue: 1
   scriptFunctions:
-  - functionName: InteractResult
-    parameters: 
-    returnValue: 0
   - functionName: Inventory/AddItem
     parameters: 01000000
     returnValue: 0
   - functionName: Inventory/RemoveItem
     parameters: 01000000
+    returnValue: 0
+  - functionName: DoorControl
+    parameters: 02000000
+    returnValue: 0
+  - functionName: OpenChest
+    parameters: 02000000
+    returnValue: 0
+  - functionName: Switch/SwitchActivate
+    parameters: 02000000
+    returnValue: 0
+  - functionName: Switch/SwitchDeactivate
+    parameters: 02000000
     returnValue: 0
