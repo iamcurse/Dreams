@@ -430,7 +430,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]door[/em2] is locked.
+        value: The [em2]door[/em2] is [em4]locked[/em4].
         type: 0
         typeString: 
       - title: Sequence
@@ -485,7 +485,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Do you want to use [em1][var=ItemName][/em1] to unlock the door?
+        value: Do you want to use [em1][var=ItemName][/em1] to [em3]unlock[/em3]
+          the [em2]door[/em2]?
         type: 0
         typeString: 
       - title: Sequence
@@ -654,7 +655,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You unlocked the door.
+        value: You [em3]unlocked[/em3] the [em2]door[/em2].
         type: 0
         typeString: 
       - title: Sequence
@@ -1094,7 +1095,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]door[/em2] is locked.
+        value: The [em2]door[/em2] is [em4]locked[/em4].
         type: 0
         typeString: 
       - title: Sequence
@@ -1123,7 +1124,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 160
-        y: 80
+        y: 79
         width: 160
         height: 30
     - id: 2
@@ -1618,7 +1619,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 56
-        y: 160
+        y: 159
         width: 160
         height: 30
     - id: 8
@@ -1699,7 +1700,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You [em4]deactivate[/em4] the switch.
+        value: You [em4]deactivate[/em4] the [em2]switch[/em2].
         type: 0
         typeString: 
       - title: Sequence
@@ -1721,7 +1722,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 270
+        x: 271
         y: 305
         width: 160
         height: 30
@@ -1748,7 +1749,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You [em3]activate[/em3] the switch.
+        value: You [em3]activate[/em3] the [em2]switch[/em2].
         type: 0
         typeString: 
       - title: Sequence
