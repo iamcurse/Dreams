@@ -732,7 +732,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been removed from your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em4]removed[/em4] from your inventory.'
         type: 0
         typeString: 
       - title: Sequence
@@ -885,7 +885,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You found [var=ItemArticle] [em1][var=ItemName][/em1]
+        value: You [em3]found[/em3] [var=ItemArticle] [em1][var=ItemName][/em1]
         type: 0
         typeString: 
       - title: Sequence
@@ -916,7 +916,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 238
-        y: 125
+        y: 117
         width: 160
         height: 30
     - id: 2
@@ -942,7 +942,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been added to your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em3]added[/em3] to your inventory.'
         type: 0
         typeString: 
       - title: Sequence
