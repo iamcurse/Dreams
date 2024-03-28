@@ -38,7 +38,7 @@ MonoBehaviour:
   - id: 1
     fields:
     - title: Name
-      value: Player
+      value: 
       type: 0
       typeString: 
     - title: Pictures
@@ -404,7 +404,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 120
-        y: 20
+        y: 19.10714
         width: 160
         height: 30
     - id: 1
@@ -915,8 +915,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 238
-        y: 117
+        x: 237
+        y: 122
         width: 160
         height: 30
     - id: 2
@@ -964,8 +964,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 236
-        y: 182
+        x: 235
+        y: 183
         width: 160
         height: 30
     entryGroups: []
@@ -1150,7 +1150,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: But it seem like the [em2]door[/em2] does not have a key hole.
+        value: But it seem like the [em2]door[/em2] [em4]does not[/em4] have a [em1]key[/em1]
+          hole.
         type: 0
         typeString: 
       - title: Sequence
