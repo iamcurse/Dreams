@@ -324,6 +324,7 @@ MonoBehaviour:
   skipIfNoValidEntries: 0
   preventRestartOnSameFrameEnded: 0
   stopConversationOnTriggerExit: 1
+  marginToAllowTriggerExit: 0
   stopConversationIfTooFar: 0
   maxConversationDistance: 0.1
   monitorConversationDistanceFrequency: 0.5

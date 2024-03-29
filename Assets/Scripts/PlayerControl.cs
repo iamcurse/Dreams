@@ -23,8 +23,8 @@ public class PlayerControl : MonoBehaviour
 
     [HideInInspector] public InventoryManager inventoryManager;
 
-    public bool dialogueOpen;
-    public bool menuOpen;
+    [ShowOnly]public bool dialogueOpen;
+    [ShowOnly]public bool menuOpen;
 
     private void Awake()
     {

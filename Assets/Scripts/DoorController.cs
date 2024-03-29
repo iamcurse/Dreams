@@ -5,7 +5,9 @@ using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
+#pragma warning disable CS0414 // Field is assigned but its value is never used
     [ShowOnly] [SerializeField] private bool isInRange;
+#pragma warning restore CS0414 // Field is assigned but its value is never used
     [ShowOnly][SerializeField] private bool isOpen;
     [SerializeField] private bool openByDefault;
     [SerializeField] private AudioClip doorOpen;
@@ -59,9 +61,6 @@ public class DoorController : MonoBehaviour
 
     public void Interact()
     {
-        if (isOpen) return;
-        if (!isInRange) return;
-        
         DialogueLua.SetVariable("GameObjectName", name);
         DialogueLua.SetVariable("ItemName", keyItem.itemName);
         DialogueLua.SetVariable("ItemID", keyItem.id);
