@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.48, y: 0.48}
   m_EdgeRadius: 0
 --- !u!114 &4293052832427092994
 MonoBehaviour:
@@ -329,10 +329,11 @@ MonoBehaviour:
   queue: 0
   skipIfNoValidEntries: 0
   preventRestartOnSameFrameEnded: 0
-  stopConversationOnTriggerExit: 0
+  stopConversationOnTriggerExit: 1
+  marginToAllowTriggerExit: 0
   stopConversationIfTooFar: 0
-  maxConversationDistance: 5
-  monitorConversationDistanceFrequency: 1
+  maxConversationDistance: 0.18
+  monitorConversationDistanceFrequency: 0.5
   showCursorDuringConversation: 0
   pauseGameDuringConversation: 0
   setActiveActions: []

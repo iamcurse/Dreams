@@ -164,7 +164,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
-      value: -1
+      value: 1
       type: 5
       typeString: CustomFieldType_Actor
     - title: Conversant
@@ -210,11 +210,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: -1
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: -1
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -269,7 +269,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -404,7 +404,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 120
-        y: 20
+        y: 19.10714
         width: 160
         height: 30
     - id: 1
@@ -539,7 +539,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -732,7 +732,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been removed from your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em4]removed[/em4] from your inventory.'
         type: 0
         typeString: 
       - title: Sequence
@@ -885,7 +885,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You found [var=ItemArticle] [em1][var=ItemName][/em1]
+        value: You [em3]found[/em3] [var=ItemArticle] [em1][var=ItemName][/em1]
         type: 0
         typeString: 
       - title: Sequence
@@ -915,8 +915,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 238
-        y: 125
+        x: 237
+        y: 122
         width: 160
         height: 30
     - id: 2
@@ -942,7 +942,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been added to your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em3]added[/em3] to your inventory.'
         type: 0
         typeString: 
       - title: Sequence
@@ -964,8 +964,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 236
-        y: 182
+        x: 235
+        y: 183
         width: 160
         height: 30
     entryGroups: []
@@ -1150,7 +1150,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: But it seem like the [em2]door[/em2] does not have a key hole.
+        value: But it seem like the [em2]door[/em2] [em4]does not[/em4] have a [em1]key[/em1]
+          hole.
         type: 0
         typeString: 
       - title: Sequence
@@ -1776,7 +1777,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 24}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 1
   syncInfo:
     syncActors: 0

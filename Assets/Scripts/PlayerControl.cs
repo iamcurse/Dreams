@@ -23,8 +23,8 @@ public class PlayerControl : MonoBehaviour
 
     [HideInInspector] public InventoryManager inventoryManager;
 
-    public bool dialogueOpen;
-    public bool menuOpen;
+    [ShowOnly]public bool dialogueOpen;
+    [ShowOnly]public bool menuOpen;
 
     private void Awake()
     {
@@ -59,6 +59,11 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (lockMovement)
+        {
+            StopMove();
+            return;
+        }
         Move();
         Animate();
     }
@@ -103,5 +108,21 @@ public class PlayerControl : MonoBehaviour
         if (menuOpen)
             return;
         _interactableObject.Interact();
+    }
+    
+    public void LockMovement()
+    {
+        lockMovement = true;
+    }
+    public void UnlockMovement()
+    {
+        lockMovement = false;
+    }
+
+    private void StopMove()
+    {
+        _rigidBody2D.velocity = Vector2.zero;
+        _animator.SetFloat(MoveX, 0);
+        _animator.SetFloat(MoveY, 0);
     }
 }

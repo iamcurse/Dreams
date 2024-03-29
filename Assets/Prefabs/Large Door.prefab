@@ -323,21 +323,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  interactionResult:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1411287083850252757}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: InteractResult
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   disable: 0
 --- !u!114 &1411287083850252757
 MonoBehaviour:
@@ -436,9 +421,10 @@ MonoBehaviour:
   skipIfNoValidEntries: 0
   preventRestartOnSameFrameEnded: 0
   stopConversationOnTriggerExit: 1
+  marginToAllowTriggerExit: 0
   stopConversationIfTooFar: 0
-  maxConversationDistance: 5
-  monitorConversationDistanceFrequency: 1
+  maxConversationDistance: 0.26
+  monitorConversationDistanceFrequency: 0.5
   showCursorDuringConversation: 0
   pauseGameDuringConversation: 0
   setActiveActions: []
