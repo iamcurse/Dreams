@@ -5,6 +5,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private bool checkMobile;
     [ShowOnly] public bool onMobile;
+    private bool _onWebGL;
     private PlayerControl _playerControl;
     private GameObject _mobileUI;
     private GameObject _fullscreenUI;
@@ -19,6 +20,7 @@ public class UIController : MonoBehaviour
     {
         #if !UNITY_EDITOR && UNITY_WEBGL
             onMobile = IsMobile();
+            _onWebGL = true;
         #endif
         #if !UNITY_EDITOR && UNITY_ANDROID
             onMobile = true;
@@ -47,7 +49,8 @@ public class UIController : MonoBehaviour
         if (!onMobile) return;
         if (_playerControl.gameObject.activeSelf)
             ShowControlUI();
-        _fullscreenUI.SetActive(true);
+        if (_onWebGL)
+            _fullscreenUI.SetActive(true);
     }
 
     public void ShowControlUI()

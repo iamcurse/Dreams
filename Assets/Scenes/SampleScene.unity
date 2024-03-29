@@ -472,6 +472,124 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1880050110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3809157766001298030, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
+  m_PrefabInstance: {fileID: 6678483763905260476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1880050111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5322917130118262123, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
+  m_PrefabInstance: {fileID: 6678483763905260476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880050110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f7dce9c2810d64090c102264f900ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1880050117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880050110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationEvents:
+    onConversationStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1880050111}
+          m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+          m_MethodName: LockMovement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1880050111}
+          m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+          m_MethodName: UnlockMovement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    runOnConversationEndEventsAtEndOfFrame: 0
+    onConversationCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLine:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenu:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenuTimeout:
+      m_PersistentCalls:
+        m_Calls: []
+    onLinkedConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+  barkEvents:
+    onBarkStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkLine:
+      m_PersistentCalls:
+        m_Calls: []
+  sequenceEvents:
+    onSequenceStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onSequenceEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  questEvents:
+    onQuestStateChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingEnabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingDisabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onUpdateQuestTracker:
+      m_PersistentCalls:
+        m_Calls: []
+  pauseEvents:
+    onDialogueSystemPause:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueSystemUnpause:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &1935085930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487,6 +605,14 @@ PrefabInstance:
     - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: conversation
       value: Door Interact Need Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: maxConversationDistance
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
+      propertyPath: stopConversationIfTooFar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8582012925539324436, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5928,7 +6054,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3809157766001298030, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880050117}
   m_SourcePrefab: {fileID: 100100000, guid: bb07bd97cf5f83142a0f142cfd66bb88, type: 3}
 --- !u!1001 &8696223212598067650
 PrefabInstance:
@@ -6034,30 +6163,6 @@ PrefabInstance:
     - target: {fileID: 4398714882663086615, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_Name
       value: Large Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: conversationActor
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: conversationConversant
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: maxConversationDistance
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: stopConversationIfTooFar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: stopConversationOnTriggerExit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482148567451908053, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
-      propertyPath: monitorConversationDistanceFrequency
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6099935171797161821, guid: ce70cd1ed64c0a849a42af04554a223d, type: 3}
       propertyPath: m_TagString
