@@ -61,6 +61,8 @@ public class DoorController : MonoBehaviour
 
     public void Interact()
     {
+        if (isOpen)
+            return;
         DialogueLua.SetVariable("GameObjectName", name);
         DialogueLua.SetVariable("ItemName", keyItem.itemName);
         DialogueLua.SetVariable("ItemID", keyItem.id);
