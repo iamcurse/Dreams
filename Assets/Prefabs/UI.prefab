@@ -719,6 +719,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bfcbe7e318cfcfb49856e37763af0516, type: 2}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.dialogueUI
+      value: 
+      objectReference: {fileID: 5660281231693306392, guid: bd684824bf8f39f419975efb62b808dd, type: 3}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.defaultCanvas
       value: 
       objectReference: {fileID: 6516805944858012925}
