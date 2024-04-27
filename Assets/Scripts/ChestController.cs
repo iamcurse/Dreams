@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class ChestController : MonoBehaviour
 {
     [ShowOnly][SerializeField] private bool isInRange;
+    [SerializeField] private bool decoy;
     [ShowOnly][SerializeField] private bool isOpen;
     [SerializeField] private Item item;
     [SerializeField] private AudioClip audioClip;
@@ -40,11 +41,14 @@ public class ChestController : MonoBehaviour
         if (isOpen) return;
 
         DialogueLua.SetVariable("GameObjectName", name);
-        DialogueLua.SetVariable("ItemName", item.itemName);
-        DialogueLua.SetVariable("ItemID", item.id);
-        
-        var vowel = item.itemName[..1].ToUpper();
-        DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
+        if (!decoy)
+        {
+            DialogueLua.SetVariable("ItemName", item.itemName);
+            DialogueLua.SetVariable("ItemID", item.id);
+            
+            var vowel = item.itemName[..1].ToUpper();
+            DialogueLua.SetVariable("ItemArticle", vowel is "A" or "E" or "I" or "O" or "U" ? "an" : "a");
+        }
         
         dialogue.Invoke();
     }
