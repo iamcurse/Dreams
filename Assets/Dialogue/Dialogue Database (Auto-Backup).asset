@@ -29,8 +29,8 @@ MonoBehaviour:
     bold: 1
     italic: 0
     underline: 0
-  - color: {r: 1, g: 0, b: 0.44984198, a: 1}
-    bold: 0
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    bold: 1
     italic: 0
     underline: 0
   baseID: 1
@@ -164,7 +164,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
-      value: -1
+      value: 1
       type: 5
       typeString: CustomFieldType_Actor
     - title: Conversant
@@ -210,11 +210,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: -1
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: -1
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -269,7 +269,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -404,7 +404,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 120
-        y: 20
+        y: 19.10714
         width: 160
         height: 30
     - id: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]door[/em2] is locked.
+        value: The [em2]door[/em2] is [em4]locked[/em4].
         type: 0
         typeString: 
       - title: Sequence
@@ -485,7 +485,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Do you want to use [em1][var=ItemName][/em1] to unlock the door?
+        value: Do you want to use [em1][var=ItemName][/em1] to [em3]unlock[/em3]
+          the [em2]door[/em2]?
         type: 0
         typeString: 
       - title: Sequence
@@ -538,7 +539,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -654,7 +655,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You unlocked the door.
+        value: You [em3]unlocked[/em3] the [em2]door[/em2].
         type: 0
         typeString: 
       - title: Sequence
@@ -731,7 +732,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been removed from your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em4]removed[/em4] from your inventory.'
         type: 0
         typeString: 
       - title: Sequence
@@ -884,7 +885,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: You found [var=ItemArticle] [em1][var=ItemName][/em1]
+        value: You [em3]found[/em3] [var=ItemArticle] [em1][var=ItemName][/em1]
         type: 0
         typeString: 
       - title: Sequence
@@ -914,8 +915,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 238
-        y: 125
+        x: 237
+        y: 122
         width: 160
         height: 30
     - id: 2
@@ -941,7 +942,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: '[em1][var=ItemName][/em1] has been added to your inventory.'
+        value: '[em1][var=ItemName][/em1] has been [em3]added[/em3] to your inventory.'
         type: 0
         typeString: 
       - title: Sequence
@@ -963,8 +964,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 236
-        y: 182
+        x: 235
+        y: 183
         width: 160
         height: 30
     entryGroups: []
@@ -1094,7 +1095,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]door[/em2] is locked.
+        value: The [em2]door[/em2] is [em4]locked[/em4].
         type: 0
         typeString: 
       - title: Sequence
@@ -1123,7 +1124,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 160
-        y: 80
+        y: 79
         width: 160
         height: 30
     - id: 2
@@ -1149,7 +1150,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: But it seem like the [em2]door[/em2] does not have a key hole.
+        value: But it seem like the [em2]door[/em2] [em4]does not[/em4] have a [em1]key[/em1]
+          hole.
         type: 0
         typeString: 
       - title: Sequence
@@ -1322,16 +1324,22 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 5
+        originDialogueID: 2
+        destinationConversationID: 5
+        destinationDialogueID: 10
+        isConnector: 0
+        priority: 2
       conditionsString: 
-      userScript: Switch(Variable["GameObjectName"])
+      userScript: SwitchActivate(Variable["GameObjectName"])
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 40
-        y: 261
+        x: 49
+        y: 256
         width: 160
         height: 30
     - id: 3
@@ -1406,7 +1414,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]switch[/em2] is [em3]activate[/em3]
+        value: The [em2]switch[/em2] is [em3]activate[/em3].
         type: 0
         typeString: 
       - title: Sequence
@@ -1427,7 +1435,7 @@ MonoBehaviour:
         destinationDialogueID: 6
         isConnector: 0
         priority: 2
-      conditionsString: SwitchCurrentState("Variable[GameObjectName"])  == true
+      conditionsString: SwitchCurrentState(Variable["GameObjectName"])  == true
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1435,7 +1443,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 274
-        y: 102
+        y: 101
         width: 160
         height: 30
     - id: 5
@@ -1461,7 +1469,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: The [em2]switch[/em2] is [em4]deactivate[/em4]
+        value: The [em2]switch[/em2] is [em4]deactivate[/em4].
         type: 0
         typeString: 
       - title: Sequence
@@ -1482,14 +1490,14 @@ MonoBehaviour:
         destinationDialogueID: 7
         isConnector: 0
         priority: 2
-      conditionsString: SwitchCurrentState("Variable[GameObjectName"])  == false
+      conditionsString: SwitchCurrentState(Variable["GameObjectName"])  == false
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 54
+        x: 53
         y: 99
         width: 160
         height: 30
@@ -1534,13 +1542,13 @@ MonoBehaviour:
       - originConversationID: 5
         originDialogueID: 6
         destinationConversationID: 5
-        destinationDialogueID: 3
+        destinationDialogueID: 8
         isConnector: 0
         priority: 2
       - originConversationID: 5
         originDialogueID: 6
         destinationConversationID: 5
-        destinationDialogueID: 8
+        destinationDialogueID: 3
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -1551,7 +1559,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 274
-        y: 151
+        y: 150
         width: 160
         height: 30
     - id: 7
@@ -1612,7 +1620,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 56
-        y: 160
+        y: 159
         width: 160
         height: 30
     - id: 8
@@ -1638,7 +1646,62 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
+        value: Yes
+        type: 0
+        typeString: 
+      - title: Sequence
         value: 
+        type: 0
+        typeString: 
+      conversationID: 5
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 5
+        originDialogueID: 8
+        destinationConversationID: 5
+        destinationDialogueID: 9
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: SwitchDeactivate(Variable["GameObjectName"])
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 268
+        y: 258
+        width: 160
+        height: 30
+    - id: 9
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: You [em4]deactivate[/em4] the [em2]switch[/em2].
         type: 0
         typeString: 
       - title: Sequence
@@ -1660,12 +1723,61 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 268
-        y: 259
+        x: 271
+        y: 305
+        width: 160
+        height: 30
+    - id: 10
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: You [em3]activate[/em3] the [em2]switch[/em2].
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 5
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 49
+        y: 306
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 29}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 1
   syncInfo:
     syncActors: 0
