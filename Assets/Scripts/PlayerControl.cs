@@ -107,7 +107,8 @@ public class PlayerControl : MonoBehaviour
             return;
         if (menuOpen)
             return;
-        _interactableObject.Interact();
+        if (_interactableObject)
+            _interactableObject.Interact();
     }
     
     public void LockMovement()
