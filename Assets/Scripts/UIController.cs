@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private bool checkMobile;
     [ShowOnly] public bool onMobile;
+    [ShowOnly] public string sceneName;
     private bool _onWebGL;
     private PlayerControl _playerControl;
     private GameObject _mobileUI;
     private GameObject _fullscreenUI;
+    private GameObject _gameOver;
 
     #region WebGL Mobile Check
     [DllImport("__Internal")]
@@ -27,6 +30,19 @@ public class UIController : MonoBehaviour
         #endif
     }
     #endregion
+
+    #region Scene Name From Index
+
+    private static string NameFromIndex(int buildIndex)
+    {
+        var path = SceneUtility.GetScenePathByBuildIndex(buildIndex);
+        var slash = path.LastIndexOf('/');
+        var name = path.Substring(slash + 1);
+        var dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
+    }
+
+    #endregion
     
     private void Awake()
     {
@@ -42,10 +58,12 @@ public class UIController : MonoBehaviour
         _playerControl = FindFirstObjectByType<PlayerControl>();
         _mobileUI = transform.GetChild(0).gameObject;
         _fullscreenUI = transform.GetChild(1).gameObject;
+        _gameOver = transform.GetChild(3).gameObject;
     }
 
     private void Start()
     {
+        sceneName = NameFromIndex(SceneManager.GetActiveScene().buildIndex);
         if (!onMobile) return;
         if (_playerControl.gameObject.activeSelf)
             ShowControlUI();
@@ -68,4 +86,23 @@ public class UIController : MonoBehaviour
     public void Fullscreen() => Screen.fullScreen = !Screen.fullScreen;
 
     public void MobileInteract() => _playerControl.Interact();
+
+    public void GameOver()
+    {
+        _gameOver.SetActive(true);
+        Time.timeScale = 0f;
+        
+        if (!onMobile) return;
+        HideControlUI();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(sceneName);
+        _gameOver.SetActive(false);
+        Time.timeScale = 1f;
+        
+        if (!onMobile) return;
+        ShowControlUI();
+    }
 }
